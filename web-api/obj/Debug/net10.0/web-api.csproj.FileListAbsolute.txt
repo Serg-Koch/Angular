@@ -44,3 +44,4 @@
 /home/sergey/Dokumente/Project/Angular/web-api/obj/Debug/net10.0/web-api.genruntimeconfig.cache
 /home/sergey/Dokumente/Project/Angular/web-api/obj/Debug/net10.0/ref/web-api.dll
 /home/sergey/Dokumente/Project/Angular/web-api/bin/Debug/net10.0/Data/lpic102b.json
+/home/sergey/Dokumente/Project/Angular/web-api/obj/Debug/net10.0/web-api.sourcelink.json

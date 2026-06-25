@@ -1,0 +1,13 @@
+<section>
+    <h2>Liste der Fragen</h2>
+    @for(question of questions(); track question.id){
+        <div>
+            <p>{{question.questionText}}</p>
+            @for (answer of question.answers; track answer.id){
+                <p>{{answer.answerText}}</p>
+                
+            }
+            <a class = "btn btn-primary" href="#">mehr</a>
+        </div>
+    }
+</section>
