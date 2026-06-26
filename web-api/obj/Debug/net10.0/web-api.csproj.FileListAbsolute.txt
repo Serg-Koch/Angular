@@ -92,4 +92,3 @@ E:\09_Angular\Angular\AngularProjekt\TestOrdner\Angular\web-api\obj\Debug\net10.
 E:\09_Angular\Angular\AngularProjekt\TestOrdner\Angular\web-api\obj\Debug\net10.0\web-api.pdb
 E:\09_Angular\Angular\AngularProjekt\TestOrdner\Angular\web-api\obj\Debug\net10.0\web-api.genruntimeconfig.cache
 E:\09_Angular\Angular\AngularProjekt\TestOrdner\Angular\web-api\obj\Debug\net10.0\ref\web-api.dll
-E:\09_Angular\Angular\AngularProjekt\TestOrdner\Angular\web-api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

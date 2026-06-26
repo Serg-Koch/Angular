@@ -1,4 +1,4 @@
-<div class="question-list-body">
+
     <h1 class="question-list-headline">Fragenliste</h1>
     <div class="question-list-headline-button">
         <a class="btn btn-secondary" href="#">Mit erster Frage starten</a>
@@ -7,7 +7,11 @@
 
     @for(question of questions(); track question.id){
     <div class="question-list-card">
-        <p class="question-list-question">{{question.questionText}}</p>
+        <div class="question-list-question-card">
+        <div class="question-list-question-number"># {{question.id}}</div>
+        <div class="question-list-question">{{question.questionText}}</div>
+        </div>
+
         @for (answer of question.answers; track answer.id){
         <div class="question-list-answer-card">
             <div class="question-list-answer-number">{{answer.id}}</div>
@@ -22,4 +26,3 @@
     </div>
     </div>
     }
-</div>

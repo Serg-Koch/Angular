@@ -9,6 +9,21 @@
     color: #ffffff;
 }
 
-*{
-    color: #333333;
+:host {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+.main-body {
+    background-color: #f5f7fb;
+    color: #242424;
+    flex: 1;
+}
+
+.app-body {
+    background-color: whitesmoke;
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
