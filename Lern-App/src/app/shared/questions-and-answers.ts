@@ -9,7 +9,7 @@ import { Answer } from './answer';
 })
 export class QuestionsAndAnswers {
     #http = inject(HttpClient);
-    #apiUrlLpic101 = 'http://localhost:5046/questions/lpic101'
+    #apiUrlLpic101 = 'http://localhost:5000/questions/lpic101'
 //    #apiUrlLpic102 = 'http://localhost:5046/questions/lpic102';
 getAll(): Observable<Question[]> {
     return this.#http.get<Question[]>(`${this.#apiUrlLpic101}`);

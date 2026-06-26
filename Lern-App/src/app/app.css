@@ -1,0 +1,14 @@
+.header {
+    background-color: #252525;
+    padding: 1rem;
+    border-bottom: 3px solid #04ddb2;
+}
+
+.header-link {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+*{
+    color: #333333;
+}

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "Namotion.Reflection/3.5.0": {
@@ -497,29 +497,36 @@
     ]
   },
   "packageFolders": {
-    "/home/sergey/.nuget/packages/": {}
+    "C:\\Users\\Steffen\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/sergey/Dokumente/Project/Angular/web-api/web-api.csproj",
+      "projectUniqueName": "E:\\09_Angular\\Angular\\AngularProjekt\\TestOrdner\\Angular\\web-api\\web-api.csproj",
       "projectName": "web-api",
-      "projectPath": "/home/sergey/Dokumente/Project/Angular/web-api/web-api.csproj",
-      "packagesPath": "/home/sergey/.nuget/packages/",
-      "outputPath": "/home/sergey/Dokumente/Project/Angular/web-api/obj/",
+      "projectPath": "E:\\09_Angular\\Angular\\AngularProjekt\\TestOrdner\\Angular\\web-api\\web-api.csproj",
+      "packagesPath": "C:\\Users\\Steffen\\.nuget\\packages\\",
+      "outputPath": "E:\\09_Angular\\Angular\\AngularProjekt\\TestOrdner\\Angular\\web-api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/sergey/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Steffen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "/usr/lib/dotnet/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -534,10 +541,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "NSwag.AspNetCore": {
@@ -564,7 +572,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.109/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
