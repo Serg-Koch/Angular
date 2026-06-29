@@ -29,6 +29,12 @@
   color: #1f241c;
 }
 
+.fragentyp {
+  color: orangered;
+  font-weight: 550;
+  margin-left: 10px;
+}
+
 .question-detail-answer-card {
   display: flex;
   gap: 20px;

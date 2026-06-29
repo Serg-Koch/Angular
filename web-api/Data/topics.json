@@ -1,0 +1,19 @@
+[
+    {
+        "id": "lpic",
+        "title": "LPIC",
+        "description": "Linux Professional Institute Certification",
+        "catalogs": [
+            {
+                "id": "lpic101",
+                "title": "LPIC-101",
+                "path": "lpic/lpic101b.json"
+            },
+            {
+                "id": "lpic102",
+                "title": "LPIC-102",
+                "path": "lpic/lpic102b.json"
+            }
+        ]
+    }
+]
