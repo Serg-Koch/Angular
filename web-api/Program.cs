@@ -37,7 +37,7 @@ app.MapGet("/questions/lpic101", () =>
 });
 app.MapGet("/questions/lpic102", () =>
 {
-    var json = File.ReadAllText("Data/lpic101b.json");
+    var json = File.ReadAllText("Data/lpic102b.json");
     return Results.Content(json, "application/json");
 });
 

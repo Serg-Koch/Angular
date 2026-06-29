@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Question } from '../../shared/question';
 import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question-list-page',
@@ -10,11 +11,12 @@ import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
   styleUrl: './question-list-page.css',
 })
 export class QuestionListPage {
-protected questions = signal<Question[]>([]);
+#route = inject(ActivatedRoute);
 #questionsAndAnswers = inject(QuestionsAndAnswers)
-  constructor() {
-   this.#questionsAndAnswers.getAll().subscribe(questions =>{
-    console.log(questions);
+protected questions = signal<Question[]>([]);
+constructor() {
+  const level = this.#route.snapshot.paramMap.get('level')!;
+  this.#questionsAndAnswers.getAll(level).subscribe(questions =>{
     this.questions.set(questions);
    })
   }

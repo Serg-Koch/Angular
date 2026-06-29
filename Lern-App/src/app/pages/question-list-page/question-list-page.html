@@ -20,7 +20,8 @@
         </div>
         }
         <div class="question-list-card-buttons">
-        <a class="btn btn-secondary list-card-button" href="#">Öffnen</a>
+        <a class="btn btn-secondary list-card-button" [routerLink]="['list', level, question.id]">Öffnen</a>
+
         <a class="btn btn-secondary list-card-button" href="#">Lösung anzeigen</a>
     
     </div>
