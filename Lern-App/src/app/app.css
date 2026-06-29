@@ -2,6 +2,15 @@
     background-color: #2e3b24;
     padding: 1rem;
     border-bottom: 4px solid #1f241c;
+    
+}
+
+
+.sticky {
+    position: sticky;
+    top: 0;
+   width: 100%;
+   z-index: 1000;
 }
 
 .header-link {
@@ -23,11 +32,13 @@
     background-color: #f6f4ec;
     color: #1f241c;
     flex: 1;
+    padding-top: 20px;
 }
 
 .app-body {
     background-color: #f6f4ec;
-    margin-left: 400px;
-    margin-right: 400px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 

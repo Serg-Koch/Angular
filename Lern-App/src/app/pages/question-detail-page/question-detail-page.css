@@ -1,5 +1,6 @@
 .question-detail-card {
-  margin: 20px 20px;
+  margin-top: 80px;
+  margin-bottom: 20px;
   padding: 14px;
   border-radius: 12px;
   background-color: #ffffff;
@@ -9,7 +10,6 @@
 
 .question-detail-question-card {
   display: flex;
-  gap: 20px;
   font-weight: 650;
   font-size: large;
   margin: 10px 5px 20px;
@@ -75,7 +75,7 @@
 
 .question-detail-button {
   flex: 1 1 180px;
-  margin: 0;
+  margin: 0 5px;
   background-color: #4F6547;
   font-weight: 600;
   border-radius: 8px;
@@ -98,10 +98,11 @@
 
 .question-detail-navigation-button {
   flex: 1 1 180px;
-  margin: 0;
+  margin: 0 25px;
   background-color: white;
   border: 1px solid #b8c4ae;
   color: #2E3B24;
+  font-weight: 600;
 }
 
 .question-detail-navigation-button:hover {
