@@ -1,12 +1,16 @@
 .header {
-    background-color: #252525;
+    background-color: #2e3b24;
     padding: 1rem;
-    border-bottom: 3px solid #04ddb2;
+    border-bottom: 4px solid #1f241c;
 }
 
 .header-link {
     text-decoration: none;
     color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 550;
+    margin-left: 20px;
+
 }
 
 :host {
@@ -16,13 +20,13 @@
 }
 
 .main-body {
-    background-color: #f5f7fb;
-    color: #242424;
+    background-color: #f6f4ec;
+    color: #1f241c;
     flex: 1;
 }
 
 .app-body {
-    background-color: whitesmoke;
+    background-color: #f6f4ec;
     margin-left: 400px;
     margin-right: 400px;
 }

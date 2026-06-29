@@ -1,15 +1,12 @@
+<h1 class="question-list-headline">LPIC Fragenliste</h1>
+<a class="btn question-list-headline-button" href="#">Mit erster Frage starten</a>
 
-    <h1 class="question-list-headline">Fragenliste</h1>
-    <div class="question-list-headline-button">
-        <a class="btn btn-secondary" href="#">Mit erster Frage starten</a>
-    </div>
-
-
-    @for(question of questions(); track question.id){
-    <div class="question-list-card">
-        <div class="question-list-question-card">
+@for(question of questions(); track question.id){
+<div class="question-list-card">
+    <div class="question-list-question-card">
         <div class="question-list-question-number"># {{question.id}}</div>
         <div class="question-list-question">{{question.questionText}}</div>
+<<<<<<< HEAD
         </div>
 
         @for (answer of question.answers; track answer.id){
@@ -24,6 +21,21 @@
 
         <a class="btn btn-secondary list-card-button" href="#">Lösung anzeigen</a>
     
+=======
+>>>>>>> origin/Steffen
     </div>
+
+    @for (answer of question.answers; track answer.id){
+    <div class="question-list-answer-card">
+        <div class="question-list-answer-number">{{answer.id}}</div>
+        <div class="question-list-answer">{{answer.answerText}}</div>
+
     </div>
     }
+    <div class="question-list-card-buttons">
+        <a class="btn list-card-button" href="#">Öffnen</a>
+        <a class="btn list-card-button" href="#">Lösung anzeigen</a>
+
+    </div>
+</div>
+}
