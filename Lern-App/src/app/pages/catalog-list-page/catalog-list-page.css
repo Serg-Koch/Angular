@@ -1,38 +1,54 @@
 .catalog-list {
     text-align: center;
-    
-    
+    color: #1F241C;
+
 }
 
 .catalog-list-title {
     font-size: 4rem;
     margin-top: 4rem;
     margin-bottom: 1rem;
-    
+    color: #1F241C;
+    font-weight: 700;
+    letter-spacing: -0.04em;
 }
 
 .catalog-list-box {
     display: flex;
     text-align: center;
     gap: 20px;
-    margin: 30px 20px;
-    padding: 20px 20px;
-background-color: antiquewhite;
-border: solid 1px;
-border-color: rgb(44, 44, 44);
+    margin-top: 25px;
+    padding: 40px 30px;
+    background-color: #ffffff;
+    border: solid 1px #d8dec9;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(46, 59, 36, 0.10);
 }
 
 .catalog-list-card {
     flex: 1;
     align-items: center;
     margin: 10px 10px;
-    padding: 10px 10px;
-background-color:bisque;
-border: solid 1px;
-border-color: rgb(44, 44, 44);
-box-shadow: 3px 5px 10px hsla(0,0%,0%,0.5);
+    padding: 60px 10px;
+    background-color: #E7EDE1;
+    border: solid 1px #D8DEC9;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(46, 59, 36, 0.10);
+    color: #1F241C;
+    font-size: 1.8em;
+    font-weight: 600;
 }
 
 .catalog-list-button {
-    align-items: center;
+    background-color: #4F6547;
+    border-color: #4F6547;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.catalog-list-button:hover {
+    background-color: #43563C;
+    border-color: #43563C;
+    color: #ffffff;
 }

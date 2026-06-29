@@ -2,75 +2,101 @@
     margin-top: 50px;
     margin-bottom: 30px;
     text-align: center;
+    color: #1f241c;
+    font-weight: 700;
+    letter-spacing: -0.03em;
 }
 
 .question-list-headline-button {
-margin-left: 40px;
-margin-bottom: 20px;
+    margin: 0 20px 20px 20px;
+    background-color: #4f6547;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.question-list-headline-button:hover {
+    background-color: #43563c;
+    color: #ffffff;
 }
 
 .question-list-card {
     margin: 20px 20px;
-    padding: 10px 10px;
-    border-radius: 5px;
-    background-color: blanchedalmond;
-    border: solid 1px;
-    border-color: rgb(121, 121, 121);
-    box-shadow: 3px 5px 10px hsla(0, 0%, 0%, 0.5);
+    padding: 14px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: solid 1px #d8dec9;
+    box-shadow: 0 8px 24px rgba(46, 59, 36, 0.12);
+
 }
 
 .question-list-question-card {
     display: flex;
     gap: 20px;
-    font-weight: 800;
-    margin: 10px 5px;
+    font-weight: 650;
+    font-size: large;
+    margin: 10px 5px 20px;
     margin-bottom: 20px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background-color: rgb(250, 158, 46);
-    border: solid 1px;
-    border-color: red;
+    padding: 6px 8px;
+    color: #1f241c;
 }
 
 .question-list-question-number {
-flex: 5%;
+    flex: 0 0 50px;
+    color: #2e3b24;
+    font-weight: 650;
 }
 
 .question-list-question {
-flex: 95%;
+    flex: 1;
+    color: #1f241c;
 }
 
 .question-list-answer-card {
     display: flex;
     gap: 20px;
-    padding: 5px 10px;
+    padding: 8px 12px;
     margin: 10px 5px;
     border-radius: 10px;
-    background-color: burlywood;
-    border: solid 1px;
-    border-color: green;
+    background-color: #e7ede1;
+    border: solid 1px #d8dec9;
+    color: #1f241c;
 }
 
 .question-list-answer-number {
     text-align: center;
-flex: 5%;
-margin-left: 5px;
-border: solid 1px;
-border-radius: 999px;
-background-color: aquamarine;
+    flex: 0 0 40px;
+    margin-left: 5px;
+    border: solid 1px #b9c4aa;
+    border-radius: 999px;
+    background-color: #ffffff;
+    color: #2e3b24;
+    font-weight: 700;
 }
 
 .question-list-answer {
-flex: 95%;
+    flex: 1;
+    color: #1f241c;
 }
 
 .question-list-card-buttons {
-display: flex;
-gap: 20px;
-text-align: center;
+    display: flex;
+    gap: 30px;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 .list-card-button {
-flex: 1;
-margin: 10px 100px;
+    flex: 1 1 180px;
+    margin: 0;
+    background-color: #4f6547;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.list-card-button:hover {
+    background-color: #43563c;
+    color: #ffffff;
 }
