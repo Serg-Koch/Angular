@@ -2,20 +2,20 @@
     background-color: #2e3b24;
     padding: 1rem;
     border-bottom: 4px solid #1f241c;
-    
+
 }
 
 .logo {
     margin-left: 10px;
-     height: 42px;
-  width: auto;
+    height: 42px;
+    width: auto;
 }
 
 .sticky {
     position: sticky;
     top: 0;
-   width: 100%;
-   z-index: 1000;
+    width: 100%;
+    z-index: 1000;
 }
 
 .header-link {
@@ -46,4 +46,3 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-

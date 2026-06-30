@@ -83,14 +83,16 @@
   flex: 1 1 180px;
   margin: 0 5px;
   background-color: #4F6547;
+  color: #ffffff;
   font-weight: 600;
   border-radius: 8px;
 }
 
 .question-detail-button:hover {
   background-color: #43563c;
+  border: solid 1px #222222;
 
-  color: #ffffff;
+  
 }
 
 .question-detail-navigation-card {

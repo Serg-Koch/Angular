@@ -5,7 +5,7 @@ import { QuestionDetailPage } from "./question-detail-page/question-detail-page"
 
 export const pagesRoutes : Routes = [
     {
-        path: 'catalog',
+        path: 'topics/:topicId/catalogs',
         component: CatalogListPage
     },
     {

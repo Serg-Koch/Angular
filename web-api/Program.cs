@@ -11,8 +11,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Angular", policy =>
     {
         policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
@@ -30,17 +30,17 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-/*app.MapGet("/questions/lpic101", () =>
+app.MapGet("/topics", () =>
 {
     var json = File.ReadAllText("Data/topics.json");
     return Results.Content(json, "application/json");
 });
-app.MapGet("/questions/lpic101", () =>
-{
-    var json = File.ReadAllText("Data/lpic/catalogs.json");
-    return Results.Content(json, "application/json");
-});*/
 
+app.MapGet("/topics/{topicId}/catalogs", (string topicId) =>
+{
+    var json = File.ReadAllText($"Data/{topicId}/catalogs.json");
+    return Results.Content(json, "application/json");
+});
 app.MapGet("/questions/lpic101", () =>
 {
     var json = File.ReadAllText("Data/lpic/lpic101b.json");

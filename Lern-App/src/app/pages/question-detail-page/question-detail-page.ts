@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Question } from '../../shared/question';
 import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
@@ -7,7 +7,7 @@ import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
 
 @Component({
   selector: 'app-question-detail-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './question-detail-page.html',
   styleUrl: './question-detail-page.css',
 })

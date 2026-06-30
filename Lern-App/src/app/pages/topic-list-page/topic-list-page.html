@@ -5,9 +5,13 @@
 
 <p class="topic-list mt-5">Wählen Sie ein Thema aus.</p>
 <section class="topic-list-box">
+    @for (topic of topics(); track topic.id) {
     <div class="topic-list-card">
-        <div class="topic-list-card-title">LPIC</div>
-        <a class="btn btn-lg topic-list-button" [routerLink]="['catalog']">auswählen</a>
+        <div class="topic-list-card-title">{{topic.title}}</div>
+        <div class="topic-list-card-description">{{topic.description}}</div>
+        <a class="btn topic-list-button" [routerLink]="['/topics', topic.id, 'catalogs']">auswählen</a>
     </div>
+    
+    }
 </section>
 

@@ -12,26 +12,24 @@ import { RouterLink } from "@angular/router";
   styleUrl: './question-list-page.css',
 })
 export class QuestionListPage {
-#route = inject(ActivatedRoute);
-#questionsAndAnswers = inject(QuestionsAndAnswers)
-protected questions = signal<Question[]>([]);
-protected level! : string;
+  #route = inject(ActivatedRoute);
+  #questionsAndAnswers = inject(QuestionsAndAnswers)
+  protected questions = signal<Question[]>([]);
+  protected level!: string;
 
-constructor() {
-  this.level = this.#route.snapshot.paramMap.get('level')!;
-  this.#questionsAndAnswers.getAll(this.level).subscribe(questions =>{
-    this.questions.set(questions);
-   })
+  constructor() {
+    this.level = this.#route.snapshot.paramMap.get('level')!;
+    this.#questionsAndAnswers.getAll(this.level).subscribe(questions => {
+      this.questions.set(questions);
+    })
   }
-showCorrectAnswer(id:number){
+  showCorrectAnswer(id: number) {
     const question = this.questions().find(q => q.id === id)!;
-    for(const answer of question.answers){
-      if(answer.isCorrect && !answer.isShowed)
-      {
+    for (const answer of question.answers) {
+      if (answer.isCorrect && !answer.isShowed) {
         answer.isShowed = true;
       }
-      else if (answer.isCorrect && answer.isShowed)
-      {
+      else if (answer.isCorrect && answer.isShowed) {
         answer.isShowed = false;
       }
     }
