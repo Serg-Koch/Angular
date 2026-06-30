@@ -1,23 +1,64 @@
-
-
-        <section class="question-detail-card">
+@if (question(); as q) {
+    <section class="question-detail-card">
             <article class="question-detail-question-card">
-                <div class="question-detail-question-number"># 1</div>
-                <div class="question-detail-question">Frage</div>
+                <div class="question-detail-question-number">{{q.id}}</div>
+                <div class="question-detail-question">{{q.questionText}}</div>
             </article>
-            <div class="fragentyp">Single-Choice-Frage</div>
-            <article class="question-detail-answer-card">
-                <div class="question-detail-answer-number"># 1</div>
-                <div class="question-detail-answer">Antwort</div>
-            </article>
-            <div class="question-detail-button-card">
+            @switch (q.type) {
+                  @case ('sc') {
+                    <p class="fragentyp">Single Choice</p>
+                    <form [formGroup]="answerCheck" (ngSubmit)="checkSingle()">
+                    @for(answer of q.answers; track answer.id){
+                    <article class="question-detail-answer-card">
+                        <input type="radio" formControlName="answer" [value]="answer.id">
+                        <label>
+                            <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
+                            <div class="question-detail-answer">{{answer.answerText}}</div>
+                        </label>
+                    </article>
+                    }
+                    <div class="question-detail-button-card">
+                        <button class=" btn btn-secondary question-detail-button" type="submit">Überprüfen</button>
+                        <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
+                        <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
+                    </div>
+                    </form>
+                  }
+                  @case ('mc') {
+                    <p class="fragentyp">Multiple Choice</p>
+                    <form action="#">
+                    @for(answer of q.answers; track answer.id){
+                    <article class="question-detail-answer-card">
+                        <input type="checkbox" id="html" name="fav_language" value="HTML">
+                        <label for="html">
+                            <div class="question-detail-answer">{{answer.answerText}}</div>
+                        </label>
+                    </article>
+                    }
+                    <div class="question-detail-button-card">
                 <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
                 <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
                 <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
             </div>
+                    </form>
+                  }
+              
+                  @default {
+                    <p>Eingabenfrage</p>
+                    <form>
+                        <input type="text">
+                        <label for="html">Gib deine Antwort ein.</label>
+                        <div class="question-detail-button-card">
+                <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
+                <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
+                <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
+            </div>
+                </form>
+                  }
+                }
         </section>
         <nav class="question-detail-navigation-card">
             <a class="btn btn-secondary question-detail-navigation-button" href="#">vor &gt;&gt;</a>
             <a class="btn btn-secondary question-detail-navigation-button" href="#">&lt;&lt; zurück</a>
         </nav>
-
+    }

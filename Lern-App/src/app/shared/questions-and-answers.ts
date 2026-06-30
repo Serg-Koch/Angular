@@ -21,15 +21,4 @@ getAll(level:string): Observable<Question[]> {
             throw new Error("Unknown level");
     }
 }
-getSingle(level: string, id: string): Observable<Question> {
-
-    switch (level) {
-      case "101":
-        return this.#http.get<Question>(`${this.#apiUrlLpic101}/${id}`);
-      case "102":
-        return this.#http.get<Question>(`${this.#apiUrlLpic102}/${id}`);
-      default:
-        throw new Error("Unknown level");
-    }
-}
 }

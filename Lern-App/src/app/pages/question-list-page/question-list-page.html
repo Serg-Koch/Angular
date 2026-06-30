@@ -12,7 +12,7 @@
     </div>
     @for (answer of question.answers; track answer.id){
         @if (question.type !== "fi" || answer.isShowed){
-        <div class="question-list-answer-card" [style.backgroundColor]="answer.isCorrect && answer.isShowed ? 'lightgreen' : 'transparent'">
+        <div class="question-list-answer-card" [style.backgroundColor]="answer.isCorrect && answer.isShowed ? 'lightgreen' : '#e7ede1'">
             <div class="question-list-answer-number">{{answer.id}}</div>
             <div class="question-list-answer">{{answer.answerText}}</div>
         </div>
