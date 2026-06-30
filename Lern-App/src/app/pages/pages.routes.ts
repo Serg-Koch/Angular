@@ -5,11 +5,15 @@ import { QuestionDetailPage } from "./question-detail-page/question-detail-page"
 
 export const pagesRoutes : Routes = [
     {
-        path: 'list/:level',
+        path: 'catalog',
+        component: CatalogListPage
+    },
+    {
+        path: 'catalog/list/:level',
         component: QuestionListPage
     },
     {
         path: 'list/:level/details/:id',
         component: QuestionDetailPage
-    }
+    },
 ];
