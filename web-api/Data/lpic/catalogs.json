@@ -1,0 +1,14 @@
+[
+    {
+        "id": "1",
+        "title": "LPIC-101",
+        "description": "Vorbereitung auf die LPIC-101 Prüfung",
+        "file": "lpic101b.json"
+    },
+    {
+        "id": "2",
+        "title": "LPIC-102",
+        "description": "Vorbereitung auf die LPIC-102 Prüfung",
+        "file": "lpic102b.json"
+    }
+]
