@@ -30,14 +30,25 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+/*app.MapGet("/questions/lpic101", () =>
+{
+    var json = File.ReadAllText("Data/topics.json");
+    return Results.Content(json, "application/json");
+});
 app.MapGet("/questions/lpic101", () =>
 {
-    var json = File.ReadAllText("Data/lpic101b.json");
+    var json = File.ReadAllText("Data/lpic/catalogs.json");
+    return Results.Content(json, "application/json");
+});*/
+
+app.MapGet("/questions/lpic101", () =>
+{
+    var json = File.ReadAllText("Data/lpic/lpic101b.json");
     return Results.Content(json, "application/json");
 });
 app.MapGet("/questions/lpic102", () =>
 {
-    var json = File.ReadAllText("Data/lpic102b.json");
+    var json = File.ReadAllText("Data/lpic/lpic102b.json");
     return Results.Content(json, "application/json");
 });
 

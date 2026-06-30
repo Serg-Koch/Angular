@@ -4,11 +4,18 @@
     text-align: center;
     color: #1f241c;
     font-weight: 700;
-    letter-spacing: -0.03em;
+}
+
+.question-list-headline-button-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .question-list-headline-button {
-    margin: 0 20px 20px 20px;
+    margin: 20px;
     background-color: #4f6547;
     color: #ffffff;
     font-weight: 600;
@@ -21,7 +28,8 @@
 }
 
 .question-list-card {
-    margin: 20px 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     padding: 14px;
     border-radius: 12px;
     background-color: #ffffff;
@@ -89,7 +97,7 @@
 
 .list-card-button {
     flex: 1 1 180px;
-    margin: 0;
+    margin: 0 5px;
     background-color: #4f6547;
     color: #ffffff;
     font-weight: 600;

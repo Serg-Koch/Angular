@@ -1,10 +1,10 @@
-.catalog-list {
+.topic-list {
     text-align: center;
     color: #1F241C;
 
 }
 
-.catalog-list-title {
+.topic-list-title {
     font-size: 4rem;
     margin-top: 4rem;
     margin-bottom: 1rem;
@@ -12,7 +12,7 @@
     font-weight: 700;
 }
 
-.catalog-list-box {
+.topic-list-box {
     display: flex;
     text-align: center;
     gap: 20px;
@@ -24,29 +24,38 @@
     box-shadow: 0 8px 24px rgba(46, 59, 36, 0.10);
 }
 
-.catalog-list-card {
+.topic-list-card {
+    display: flex;
     flex: 1;
     align-items: center;
     margin: 10px 10px;
-    padding: 60px 10px;
+    padding: 10px 10px;
     background-color: #E7EDE1;
     border: solid 1px #D8DEC9;
     border-radius: 10px;
     box-shadow: 0 4px 14px rgba(46, 59, 36, 0.10);
-    color: #1F241C;
+    
+}
+
+.topic-list-card-title {
+flex: 1;
+text-align: left;
+margin-left: 20px;
+color: #1F241C;
     font-size: 2em;
     font-weight: 650;
 }
 
-.catalog-list-button {
+.topic-list-button {
     background-color: #4F6547;
     border-color: #4F6547;
+    margin-right: 20px;
     color: #ffffff;
     font-weight: 600;
     border-radius: 8px;
 }
 
-.catalog-list-button:hover {
+.topic-list-button:hover {
     background-color: #43563C;
     border-color: #43563C;
     color: #ffffff;
