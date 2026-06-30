@@ -1,6 +1,6 @@
 <h1 class="question-list-headline">LPIC ### Fragenliste</h1>
-<div class="question-list-headline-button-card">
-<a class="btn question-list-headline-button" href="#">Mit erster Frage starten</a>
+<div>
+<a class="btn question-list-headline-button" [routerLink]="['/list', level, 'details', 1]">Mit erster Frage starten</a>
 <a class="btn question-list-headline-button" href="#">Zurück zur Katalogauswahl</a>
 </div>
 
@@ -10,17 +10,18 @@
         <div class="question-list-question-number"># {{question.id}}</div>
         <div class="question-list-question">{{question.questionText}}</div>
     </div>
-
     @for (answer of question.answers; track answer.id){
-    <div class="question-list-answer-card">
-        <div class="question-list-answer-number">{{answer.id}}</div>
-        <div class="question-list-answer">{{answer.answerText}}</div>
-
-    </div>
+        @if (question.type !== "fi" || answer.isShowed){
+        <div class="question-list-answer-card" [style.backgroundColor]="answer.isCorrect && answer.isShowed ? 'lightgreen' : 'transparent'">
+            <div class="question-list-answer-number">{{answer.id}}</div>
+            <div class="question-list-answer">{{answer.answerText}}</div>
+        </div>
+        }
     }
     <div class="question-list-card-buttons">
-        <a class="btn list-card-button" href="#">Öffnen</a>
-        <a class="btn list-card-button" href="#">Lösung anzeigen</a>
+        <a class="btn list-card-button" [routerLink]="['/list', level, 'details', question.id]">Öffnen</a>
+        
+        <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>
 
     </div>
 </div>
