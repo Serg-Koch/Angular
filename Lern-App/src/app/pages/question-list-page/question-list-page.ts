@@ -16,7 +16,6 @@ export class QuestionListPage {
 #questionsAndAnswers = inject(QuestionsAndAnswers)
 protected questions = signal<Question[]>([]);
 protected level! : string;
-protected bgColor = "transparent";
 
 constructor() {
   this.level = this.#route.snapshot.paramMap.get('level')!;
@@ -27,9 +26,13 @@ constructor() {
 showCorrectAnswer(id:number){
     const question = this.questions().find(q => q.id === id)!;
     for(const answer of question.answers){
-      if(answer.isCorrect)
+      if(answer.isCorrect && !answer.isShowed)
       {
-        answer.bgColor = "green";
+        answer.isShowed = true;
+      }
+      else if (answer.isCorrect && answer.isShowed)
+      {
+        answer.isShowed = false;
       }
     }
   }
