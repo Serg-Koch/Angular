@@ -5,6 +5,11 @@
     
 }
 
+.logo {
+    margin-left: 10px;
+     height: 48px;
+  width: auto;
+}
 
 .sticky {
     position: sticky;
@@ -18,7 +23,7 @@
     color: #ffffff;
     font-size: 1.3rem;
     font-weight: 550;
-    margin-left: 20px;
+    margin-left: 5px;
 
 }
 
