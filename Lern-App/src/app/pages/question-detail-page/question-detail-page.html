@@ -1,21 +1,21 @@
 @if (question(); as q) {
 <section class="question-detail-card">
     <article class="question-detail-question-card">
-        <div class="question-detail-question-number">{{q.id}}</div>
+        <div class="question-detail-question-number"># {{q.id}}</div>
         <div class="question-detail-question">{{q.questionText}}</div>
     </article>
     @switch (q.type) {
     @case ('sc') {
-    <p class="fragentyp">Single Choice</p>
+    <p class="fragentyp">Single-Choice-Frage</p>
     <form [formGroup]="answerCheck">
-        @for(answer of q.answers; track answer.id){
-        <article class="question-detail-answer-card" [ngClass]="answer.state">
-            <input type="radio" formControlName="answer" [value]="answer.id">
-            <label>
-                <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
-                <div class="question-detail-answer">{{answer.answerText}}</div>
-            </label>
-        </article>
+        @for (answer of q.answers; track answer.id) {
+        <label class="question-detail-answer-card" [ngClass]="answer.state">
+            <input class="question-detail-radio" type="radio" formControlName="answer" [value]="answer.id">
+            <div class="question-detail-answer-number">{{answer.id}}</div>
+            <div class="question-detail-answer">
+                {{ answer.answerText }}
+            </div>
+        </label>
         }
         <div class="question-detail-button-card">
             <button class=" btn btn-secondary question-detail-button" type="button"
@@ -27,15 +27,18 @@
     </form>
     }
     @case ('mc') {
-    <p class="fragentyp">Multiple Choice</p>
+    <p class="fragentyp">Multiple-Choice-Frage</p>
     <form action="#">
-        @for(answer of q.answers; track answer.id){
-        <article class="question-detail-answer-card">
-            <input type="checkbox" id="html" name="fav_language" value="HTML">
-            <label for="html">
-                <div class="question-detail-answer">{{answer.answerText}}</div>
-            </label>
-        </article>
+        @for (answer of q.answers; track answer.id) {
+        <label class="question-detail-answer-card">
+            <input type="checkbox" class="question-detail-checkbox">
+            <div class="question-detail-answer-number">
+                {{ answer.id }}
+            </div>
+            <div class="question-detail-answer">
+                {{ answer.answerText }}
+            </div>
+        </label>
         }
         <div class="question-detail-button-card">
             <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
@@ -46,10 +49,11 @@
     }
 
     @default {
-    <p>Eingabenfrage</p>
-    <form>
-        <input type="text">
-        <label for="html">Gib deine Antwort ein.</label>
+    <p class="fragentyp">Eingabenfrage</p>
+    <form [formGroup]="answerCheck">
+        <div class="question-detail-answer-card-eingabe">
+            <input id="answer" type="text" formControlName="answer" placeholder="Gib eine Antwort ein" class="eingabefeld">
+        </div>
         <div class="question-detail-button-card">
             <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
             <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
@@ -64,4 +68,3 @@
     <a class="btn btn-secondary question-detail-navigation-button" href="#">&lt;&lt; zurück</a>
 </nav>
 }
->>>>>>> origin/Sergey
