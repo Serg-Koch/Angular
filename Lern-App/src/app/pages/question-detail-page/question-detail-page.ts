@@ -30,13 +30,20 @@ constructor() {
    })
   }
 
-answerCheck = new FormGroup({
+answerSingle = new FormGroup({
   answer: new FormControl('')
 });
-protected answerId = Number(this.answerCheck.value.answer);
+answerMulti = new FormGroup({
+  answer1: new FormControl(false),
+  answer2: new FormControl(false),
+  answer3: new FormControl(false),
+  answer4: new FormControl(false),
+  answer5: new FormControl(false),
+  answer6: new FormControl(false),
+})
 checkAnswer(){
-  const answerId = Number(this.answerCheck.value.answer);
-  if(this.answerId === 0){
+  const answerId = Number(this.answerMulti.value);
+  if(answerId === 0){
     const allAnswers = this.question()?.answers!;
     for(const answer of allAnswers){
       if(answer.isCorrect)
@@ -47,7 +54,7 @@ checkAnswer(){
   }
 }
 checkSingle(){
-  const answerId = Number(this.answerCheck.value.answer);
+  const answerId = Number(this.answerSingle.value.answer);
   const q = this.question()?.answers.find(a => a.id === answerId)!;
   if (q.isCorrect)
   {
@@ -65,4 +72,26 @@ checkSingle(){
     }
   }
 }
+checkMultiple(){
+  const answerId = this.answerMulti.value;
+  console.log(answerId);
+  const que = this.question()?.answers!;
+  for(const q of que){
+  const selected = answerId[a as keyof typeof answerId];
+  if (selected && q.isCorrect) q.state = 'correct';
+  else if (selected && !q.isCorrect) q.state = 'wrong';
+    }
+  }
 }
+  /*else{
+    //q.state = 'wrong';
+    const allAnswers = this.question()?.answers!;
+    for(const answer of allAnswers){
+      if(answerId == answer.id && answer.isCorrect)
+      {
+        answer.state = 'correct';
+      }
+      else if (answerId == answer.id && !answer.isCorrect){
+        answer.state = 'wrong';
+      }
+    }*/

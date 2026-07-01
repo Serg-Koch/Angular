@@ -69,6 +69,11 @@
     background-color: #e7ede1;
     border: solid 1px #d8dec9;
     color: #1f241c;
+}.question-list-answer-card.correct{
+  background-color: lightgreen;
+}
+.question-list-answer-card.wrong{
+  background-color: rgb(255, 76, 76);
 }
 
 .question-list-answer-number {

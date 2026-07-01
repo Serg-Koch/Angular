@@ -7,7 +7,7 @@
             @switch (q.type) {
                   @case ('sc') {
                     <p class="fragentyp">Single Choice</p>
-                    <form [formGroup]="answerCheck">
+                    <form [formGroup]="answerSingle">
                     @for(answer of q.answers; track answer.id){
                     <article class="question-detail-answer-card" [ngClass]="answer.state">
                         <input type="radio" formControlName="answer" [value]="answer.id">
@@ -26,18 +26,19 @@
                   }
                   @case ('mc') {
                     <p class="fragentyp">Multiple Choice</p>
-                    <form action="#">
+                    <form [formGroup]="answerMulti">
                     @for(answer of q.answers; track answer.id){
-                    <article class="question-detail-answer-card">
-                        <input type="checkbox" id="html" name="fav_language" value="HTML">
-                        <label for="html">
-                            <div class="question-detail-answer">{{answer.answerText}}</div>
+                    <article class="question-detail-answer-card" [ngClass]="answer.state">
+                        <input type="checkbox" [formControlName]="'answer' + answer.id">
+                        <label>
+                            <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
+                            <div class="question-detail-answer" >{{answer.answerText}}</div>
                         </label>
                     </article>
                     }
                     <div class="question-detail-button-card">
-                <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
-                <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
+                <button class=" btn btn-secondary question-detail-button" type="button" (click)="checkMultiple()">Überprüfen</button>
+                <button class="btn btn-secondary question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
                 <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
             </div>
                     </form>

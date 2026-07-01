@@ -3,37 +3,33 @@ import { Question } from '../../shared/question';
 import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
 import { ActivatedRoute } from '@angular/router';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-question-list-page',
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './question-list-page.html',
   styleUrl: './question-list-page.css',
 })
 export class QuestionListPage {
-#route = inject(ActivatedRoute);
-#questionsAndAnswers = inject(QuestionsAndAnswers)
-protected questions = signal<Question[]>([]);
-protected level! : string;
+  #route = inject(ActivatedRoute);
+  #questionsAndAnswers = inject(QuestionsAndAnswers);
+  protected questions = signal<Question[]>([]);
+  protected level!: string;
 
-constructor() {
-  this.level = this.#route.snapshot.paramMap.get('level')!;
-  this.#questionsAndAnswers.getAll(this.level).subscribe(questions =>{
-    this.questions.set(questions);
-   })
+  constructor() {
+    this.level = this.#route.snapshot.paramMap.get('level')!;
+    this.#questionsAndAnswers.getAll(this.level).subscribe((questions) => {
+      this.questions.set(questions);
+    });
   }
-/*showCorrectAnswer(id:number){
-    const question = this.questions().find(q => q.id === id)!;
-    for(const answer of question.answers){
-      if(answer.isCorrect && !answer.isShowed)
-      {
-        answer.isShowed = true;
-      }
-      else if (answer.isCorrect && answer.isShowed)
-      {
-        answer.isShowed = false;
+  showCorrectAnswer(id: number) {
+    const question = this.questions().find((q) => q.id === id)!;
+    for (const answer of question.answers) {
+      if (answer.isCorrect) {
+        answer.state = 'correct';
       }
     }
-  }*/
+  }
 }
