@@ -33,10 +33,10 @@ constructor() {
 answerCheck = new FormGroup({
   answer: new FormControl('')
 });
+protected answerId = Number(this.answerCheck.value.answer);
 checkAnswer(){
   const answerId = Number(this.answerCheck.value.answer);
-  //const q = this.question()?.answers.find(a => a.id === answerId)!;
-  if(answerId === 0){
+  if(this.answerId === 0){
     const allAnswers = this.question()?.answers!;
     for(const answer of allAnswers){
       if(answer.isCorrect)
@@ -45,26 +45,6 @@ checkAnswer(){
       }
     }
   }
-checkSingle(){
-  
-}
-
-  /*if (q.isCorrect)
-  {
-    q.state = 'correct';
-  }
-  else{
-    const allAnswers = this.question()?.answers!;
-    for(const answer of allAnswers){
-      if(answer !== q && answer.isCorrect)
-      {
-        answer.state = 'correct';
-      }
-      else
-      {
-        answer.state = 'wrong';
-      }
-    }
 }
 checkSingle(){
   const answerId = Number(this.answerCheck.value.answer);
@@ -74,32 +54,15 @@ checkSingle(){
     q.state = 'correct';
   }
   else{
+    q.state = 'wrong';
     const allAnswers = this.question()?.answers!;
     for(const answer of allAnswers){
-      if(answer !== q && answer.isCorrect)
+    
+      if(answer.isCorrect)
       {
         answer.state = 'correct';
       }
-      else
-      {
-        answer.state = 'wrong';
-      }
-    }
-}
-}
-showCorrectAnswer(id:number){
-    
-    for(const answer of question.answers){
-      if(answer.isCorrect && !answer.isShowed)
-      {
-        answer.isShowed = true;
-      }
-      else if (answer.isCorrect && answer.isShowed)
-      {
-        answer.isShowed = false;
-      }
     }
   }
-  */
 }
 }
