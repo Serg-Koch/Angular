@@ -6,12 +6,12 @@ import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
 import {FormGroup, FormControl} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ElementSchemaRegistry } from '@angular/compiler';
+import { NgClass } from '@angular/common';
 
 
 @Component({
   selector: 'app-question-detail-page',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgClass],
   templateUrl: './question-detail-page.html',
   styleUrl: './question-detail-page.css',
 })
@@ -33,15 +33,73 @@ constructor() {
 answerCheck = new FormGroup({
   answer: new FormControl('')
 });
+checkAnswer(){
+  const answerId = Number(this.answerCheck.value.answer);
+  //const q = this.question()?.answers.find(a => a.id === answerId)!;
+  if(answerId === 0){
+    const allAnswers = this.question()?.answers!;
+    for(const answer of allAnswers){
+      if(answer.isCorrect)
+      {
+        answer.state = 'correct';
+      }
+    }
+  }
+checkSingle(){
+  
+}
+
+  /*if (q.isCorrect)
+  {
+    q.state = 'correct';
+  }
+  else{
+    const allAnswers = this.question()?.answers!;
+    for(const answer of allAnswers){
+      if(answer !== q && answer.isCorrect)
+      {
+        answer.state = 'correct';
+      }
+      else
+      {
+        answer.state = 'wrong';
+      }
+    }
+}
 checkSingle(){
   const answerId = Number(this.answerCheck.value.answer);
   const q = this.question()?.answers.find(a => a.id === answerId)!;
   if (q.isCorrect)
   {
-    console.log('Es funktioniert!');
+    q.state = 'correct';
   }
   else{
-    console.log('nicht funkt')};
-
+    const allAnswers = this.question()?.answers!;
+    for(const answer of allAnswers){
+      if(answer !== q && answer.isCorrect)
+      {
+        answer.state = 'correct';
+      }
+      else
+      {
+        answer.state = 'wrong';
+      }
+    }
+}
+}
+showCorrectAnswer(id:number){
+    
+    for(const answer of question.answers){
+      if(answer.isCorrect && !answer.isShowed)
+      {
+        answer.isShowed = true;
+      }
+      else if (answer.isCorrect && answer.isShowed)
+      {
+        answer.isShowed = false;
+      }
+    }
+  }
+  */
 }
 }

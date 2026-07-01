@@ -11,8 +11,8 @@
         <div class="question-list-question">{{question.questionText}}</div>
     </div>
     @for (answer of question.answers; track answer.id){
-        @if (question.type !== "fi" || answer.isShowed){
-        <div class="question-list-answer-card" [style.backgroundColor]="answer.isCorrect && answer.isShowed ? 'lightgreen' : '#e7ede1'">
+        @if (question.type !== "fi"){
+        <div class="question-list-answer-card" >
             <div class="question-list-answer-number">{{answer.id}}</div>
             <div class="question-list-answer">{{answer.answerText}}</div>
         </div>
@@ -21,7 +21,7 @@
     <div class="question-list-card-buttons">
         <a class="btn list-card-button" [routerLink]="['/list', level, 'details', question.id]">Öffnen</a>
         
-        <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>
+        <!--<a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>-->
 
     </div>
 </div>

@@ -7,19 +7,19 @@
             @switch (q.type) {
                   @case ('sc') {
                     <p class="fragentyp">Single Choice</p>
-                    <form [formGroup]="answerCheck" (ngSubmit)="checkSingle()">
+                    <form [formGroup]="answerCheck">
                     @for(answer of q.answers; track answer.id){
-                    <article class="question-detail-answer-card">
+                    <article class="question-detail-answer-card" [ngClass]="answer.state">
                         <input type="radio" formControlName="answer" [value]="answer.id">
                         <label>
                             <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
-                            <div class="question-detail-answer">{{answer.answerText}}</div>
+                            <div class="question-detail-answer" >{{answer.answerText}}</div>
                         </label>
                     </article>
                     }
                     <div class="question-detail-button-card">
-                        <button class=" btn btn-secondary question-detail-button" type="submit">Überprüfen</button>
-                        <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
+                        <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
+                        <button class="btn btn-secondary question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
                         <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
                     </div>
                     </form>
