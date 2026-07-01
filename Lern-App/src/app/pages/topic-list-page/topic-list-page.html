@@ -1,17 +1,21 @@
-
 <h1 class="topic-list topic-list-title">DC-Lernprogramm</h1>
 
-<p class="topic-list mt-5">Willkommen im Druschba-Coder-Lernprogramm! Mit diesem Programm können Sie gezielt lernen und sich auf Prüfungen vorbereiten.</p>
+<p class="topic-list mt-5">Willkommen im Druschba-Coder-Lernprogramm! Mit diesem Programm können Sie gezielt lernen und
+    sich auf Prüfungen vorbereiten.</p>
 
 <p class="topic-list mt-5">Wählen Sie ein Thema aus.</p>
 <section class="topic-list-box">
+    @if (hasError()) {
+    <div class="topic-list-card">
+        Daten konnten nicht geladen werden!
+    </div>
+    } @else {
     @for (topic of topics(); track topic.id) {
     <div class="topic-list-card">
         <div class="topic-list-card-title">{{topic.title}}</div>
         <div class="topic-list-card-description">{{topic.description}}</div>
         <a class="btn topic-list-button" [routerLink]="['/topics', topic.id, 'catalogs']">auswählen</a>
     </div>
-    
+    }
     }
 </section>
-

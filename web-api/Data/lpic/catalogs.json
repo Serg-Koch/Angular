@@ -10,35 +10,6 @@
         "title": "LPIC-102",
         "description": "Vorbereitung auf die LPIC-102 Prüfung",
         "file": "lpic102b.json"
-    },
-    {
-        "id": "lpic103",
-        "title": "LPIC-103",
-        "description": "Vorbereitung auf die LPIC-103 Prüfung",
-        "file": "lpic102b.json"
-    },
-    {
-        "id": "lpic104",
-        "title": "LPIC-104",
-        "description": "Vorbereitung auf die LPIC-104 Prüfung",
-        "file": "lpic102b.json"
-    },
-    {
-        "id": "lpic105",
-        "title": "LPIC-105",
-        "description": "Vorbereitung auf die LPIC-105 Prüfung",
-        "file": "lpic102b.json"
-    },
-    {
-        "id": "lpic106",
-        "title": "LPIC-106",
-        "description": "Vorbereitung auf die LPIC-106 Prüfung",
-        "file": "lpic102b.json"
-    },
-    {
-        "id": "lpic107",
-        "title": "LPIC-107",
-        "description": "Vorbereitung auf die LPIC-107 Prüfung",
-        "file": "lpic102b.json"
     }
+    
 ]

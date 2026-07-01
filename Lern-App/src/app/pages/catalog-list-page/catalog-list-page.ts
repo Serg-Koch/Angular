@@ -15,13 +15,14 @@ export class CatalogListPage {
   private route = inject(ActivatedRoute);
 
   catalogs = signal<Catalog[]>([]);
+  topicId = this.route.snapshot.paramMap.get('topicId');
 
-  constructor() {
-    const topicId = this.route.snapshot.paramMap.get('topicId');
-
-    this.http.get<Catalog[]>(`http://localhost:5100/topics/${topicId}/catalogs`)
+constructor() {
+    this.http.get<Catalog[]>(`http://localhost:5100/topics/${this.topicId}/catalogs`)
     .subscribe(catalogs => {
       this.catalogs.set(catalogs);
     });
   }
 }
+
+

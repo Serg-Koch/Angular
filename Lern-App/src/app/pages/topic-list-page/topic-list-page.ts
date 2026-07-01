@@ -13,11 +13,18 @@ export class TopicListPage {
   private http = inject(HttpClient);
 
   topics = signal<Topic[]>([]);
+  hasError = signal(false);
 
   constructor() {
     this.http.get<Topic[]>('http://localhost:5100/topics')
-    .subscribe(topics => {
-      this.topics.set(topics);
+    .subscribe({
+      next: topics => {
+        this.topics.set(topics);
+      },
+      error: error => {
+        console.error(error);
+        this.hasError.set(true);
+      }
     });
   }
 }

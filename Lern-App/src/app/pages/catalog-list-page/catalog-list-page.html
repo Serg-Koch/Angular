@@ -1,16 +1,16 @@
-
 <h1 class="catalog-list catalog-list-title">### Katalog-Auswahl</h1>
-
-<p class="catalog-list mt-5">Wählen Sie einen Katalog aus, um mit dem Lernen zu beginnen: muss noch umgebaut werden</p>
-
-<div class="catalog-list-back-button-container" [routerLink]="['/']">
-<a class="btn catalog-list-back-button">Zurück zur Themenauswahl</a>
+<div class="catalog-list-back-button-container mt-5">
+    <a class="btn catalog-list-back-button" [routerLink]="['/']">Zurück zur Themenauswahl</a>
 </div>
+<p class="catalog-list mt-3">Wählen Sie einen Katalog aus, um mit dem Lernen zu beginnen</p>
 <section class="catalog-list-box">
     @for (catalog of catalogs(); track catalog.id) {
     <div class="catalog-list-card">
         <p class="catalog-list-card-title">{{catalog.title}}</p>
         <p>{{catalog.description}}</p>
-        <a class="btn btn-lg catalog-list-button" [routerLink]="['list', 101]">Fragenliste anzeigen</a>
+        <a class="btn btn-lg catalog-list-button" [routerLink]="['/topics', topicId, 'catalogs', catalog.id, 'list']">
+            Fragenliste anzeigen {{ topicId }} / {{ catalog.id }}
+        </a>
     </div>
-}
+    }
+</section>

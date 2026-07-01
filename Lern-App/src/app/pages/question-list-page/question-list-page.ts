@@ -15,11 +15,16 @@ export class QuestionListPage {
   #route = inject(ActivatedRoute);
   #questionsAndAnswers = inject(QuestionsAndAnswers)
   protected questions = signal<Question[]>([]);
-  protected level!: string;
+  protected topicId!: string;
+  protected catalogId!: string;
 
   constructor() {
-    this.level = this.#route.snapshot.paramMap.get('level')!;
-    this.#questionsAndAnswers.getAll(this.level).subscribe(questions => {
+    this.topicId = this.#route.snapshot.paramMap.get('topicId')!;
+    this.catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
+console.log('topicId:', this.topicId);
+console.log('catalogId:', this.catalogId);
+
+    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe(questions => {
       this.questions.set(questions);
     })
   }
