@@ -9,8 +9,8 @@ import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
 
 import { ElementSchemaRegistry } from '@angular/compiler';
 
-import {FormGroup, FormControl} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
 
@@ -28,8 +28,8 @@ export class QuestionDetailPage {
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
   constructor() {
-      const topicId = this.#route.snapshot.paramMap.get('topicId')!;
-  const catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
+    const topicId = this.#route.snapshot.paramMap.get('topicId')!;
+    const catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
     const id = this.#route.snapshot.paramMap.get('id')!;
     this.#questionsAndAnswers.getAll(topicId, catalogId).subscribe(questions => {
       this.questions.set(questions);
@@ -38,75 +38,37 @@ export class QuestionDetailPage {
   }
 
 
-answerCheck = new FormGroup({
-  answer: new FormControl('')
-});
-checkAnswer(){
-  const answerId = Number(this.answerCheck.value.answer);
-  //const q = this.question()?.answers.find(a => a.id === answerId)!;
-  if(answerId === 0){
-    const allAnswers = this.question()?.answers!;
-    for(const answer of allAnswers){
-      if(answer.isCorrect)
-      {
-        answer.state = 'correct';
+  answerCheck = new FormGroup({
+    answer: new FormControl('')
+  });
+  protected answerId = Number(this.answerCheck.value.answer);
+  checkAnswer() {
+    const answerId = Number(this.answerCheck.value.answer);
+    if (this.answerId === 0) {
+      const allAnswers = this.question()?.answers!;
+      for (const answer of allAnswers) {
+        if (answer.isCorrect) {
+          answer.state = 'correct';
+        }
       }
     }
-  }
-checkSingle(){
-  
 
+  }
+  checkSingle() {
+    const answerId = Number(this.answerCheck.value.answer);
+    const q = this.question()?.answers.find(a => a.id === answerId)!;
+    if (q.isCorrect) {
+      q.state = 'correct';
+    }
+    else {
+      q.state = 'wrong';
+      const allAnswers = this.question()?.answers!;
+      for (const answer of allAnswers) {
 
-  /*if (q.isCorrect)
-  {
-    q.state = 'correct';
-  }
-  else{
-    const allAnswers = this.question()?.answers!;
-    for(const answer of allAnswers){
-      if(answer !== q && answer.isCorrect)
-      {
-        answer.state = 'correct';
-      }
-      else
-      {
-        answer.state = 'wrong';
-      }
-    }
-}
-checkSingle(){
-  const answerId = Number(this.answerCheck.value.answer);
-  const q = this.question()?.answers.find(a => a.id === answerId)!;
-  if (q.isCorrect)
-  {
-    q.state = 'correct';
-  }
-  else{
-    const allAnswers = this.question()?.answers!;
-    for(const answer of allAnswers){
-      if(answer !== q && answer.isCorrect)
-      {
-        answer.state = 'correct';
-      }
-      else
-      {
-        answer.state = 'wrong';
-      }
-    }
-}
-}
-showCorrectAnswer(id:number){
-    
-    for(const answer of question.answers){
-      if(answer.isCorrect && !answer.isShowed)
-      {
-        answer.isShowed = true;
-      }
-      else if (answer.isCorrect && answer.isShowed)
-      {
-        answer.isShowed = false;
+        if (answer.isCorrect) {
+          answer.state = 'correct';
+        }
       }
     }
   }
-  */
 }
