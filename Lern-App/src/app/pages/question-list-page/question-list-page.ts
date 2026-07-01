@@ -28,7 +28,9 @@ console.log('catalogId:', this.catalogId);
       this.questions.set(questions);
     })
   }
-  showCorrectAnswer(id: number) {
+
+/*showCorrectAnswer(id:number){
+
     const question = this.questions().find(q => q.id === id)!;
     for (const answer of question.answers) {
       if (answer.isCorrect && !answer.isShowed) {
@@ -38,5 +40,5 @@ console.log('catalogId:', this.catalogId);
         answer.isShowed = false;
       }
     }
-  }
+  }*/
 }

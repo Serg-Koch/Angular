@@ -1,4 +1,4 @@
-<h1 class="catalog-list catalog-list-title">### Katalog-Auswahl</h1>
+<h1 class="catalog-list catalog-list-title">Katalog-Auswahl</h1>
 <div class="catalog-list-back-button-container mt-5">
     <a class="btn catalog-list-back-button" [routerLink]="['/']">Zurück zur Themenauswahl</a>
 </div>
@@ -9,7 +9,7 @@
         <p class="catalog-list-card-title">{{catalog.title}}</p>
         <p>{{catalog.description}}</p>
         <a class="btn btn-lg catalog-list-button" [routerLink]="['/topics', topicId, 'catalogs', catalog.id, 'list']">
-            Fragenliste anzeigen {{ topicId }} / {{ catalog.id }}
+            Fragenliste anzeigen
         </a>
     </div>
     }

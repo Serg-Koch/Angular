@@ -45,6 +45,12 @@
   border: solid 1px #d8dec9;
   color: #1f241c;
 }
+.question-detail-answer-card.correct{
+  background-color: lightgreen;
+}
+.question-detail-answer-card.wrong{
+  background-color: rgb(255, 76, 76);
+}
 
 .question-detail-answer-card:hover {
   background-color: #dce5d4;
