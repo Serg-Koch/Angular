@@ -20,10 +20,10 @@
         }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button"
-                (click)="checkSingle()">Überprüfen</button>
+                (click)="checkSingle()">Eingabe überprüfen</button>
             <button class="btn question-detail-button" type="button"
-                (click)="checkAnswer()">Lösung</button>
-            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a>
+                (click)="checkAnswer()">Lösung anzeigen</button>
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
         </div>
     </form>
     }
@@ -39,10 +39,10 @@
         }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button"
-                (click)="checkMultiple()">Überprüfen</button>
+                (click)="checkMultiple()">Eingabe überprüfen</button>
             <button class="btn question-detail-button" type="button"
-                (click)="checkAnswer()">Lösung</button>
-            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a>
+                (click)="checkAnswer()">Lösung anzeigen</button>
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
         </div>
     </form>
     }
@@ -54,9 +54,9 @@
                             class="eingabefeld">
                     </div>
                     <div class="question-detail-button-card">
-                        <button class="btn question-detail-button" type="button">Überprüfen</button>
-                        <button class="btn question-detail-button" type="button">Lösung</button>
-                        <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']" [fragment]="'question-' + q.id">Zur Liste</a>
+                        <button class="btn question-detail-button" type="button">Eingabe überprüfen</button>
+                        <button class="btn question-detail-button" type="button">Lösung anzeigen</button>
+                        <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']" [fragment]="'question-' + q.id">Zurück zur Liste</a>
                     </div>
                 </form> -->
     }
