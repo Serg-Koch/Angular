@@ -106,16 +106,14 @@
 }
 
 .question-detail-answer-card.correct {
-  background-color: #3E6B4A;
+  background-color: lightgreen;
   border: solid 1px #222222;
 }
 
 .question-detail-answer-card.wrong {
-  background-color: #9b3d2f;
+  background-color: lightcoral;
   border: solid 1px #222222;
 }
-
-
 
 .question-detail-answer-number {
   text-align: center;
@@ -133,7 +131,6 @@
   flex: 1;
   color: #1f241c;
 }
-
 
 .question-detail-button-card {
   display: flex;
