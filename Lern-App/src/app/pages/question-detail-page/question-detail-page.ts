@@ -43,23 +43,22 @@ export class QuestionDetailPage {
     answer3: new FormControl(false),
     answer4: new FormControl(false),
     answer5: new FormControl(false),
-    answer6: new FormControl(false),
   });
   checkAnswer() {
+    const answerId = this.answerSingle.value.answer;
+    if (answerId === null) {
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
         if (answer.isCorrect) {
           answer.state = 'correct';
         }
-        else
-          answer.state = 'default';
       }
-    //}
+    }
   }
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
     const answer = this.question()?.answers.find((a) => a.id === answerId)!;
-    this.isChecked = true;
+    this.isChecked = true
     if (answer.isCorrect) {
       answer.state = 'correct';
     }
@@ -73,14 +72,29 @@ export class QuestionDetailPage {
       }
     }
   }
-  checkMultiple() {
+  /*checkMultiple() {
     const answerId = this.answerMulti.value;
     console.log(answerId);
-    const que = this.question()?.answers!;
-    for (const q of que) {
+    const answers = this.question()?.answers!;
+    for (const answer of answers) {
       const selected = answerId['answer${q.id}' as keyof typeof answerId];
-      if (selected && q.isCorrect) q.state = 'correct';
-      else if (selected && !q.isCorrect) q.state = 'wrong';
+      if (selected && answer.isCorrect){
+        answer.state = 'correct';
+      }
+      else if (selected && !q.isCorrect)
+         {answer.state = 'wrong';}
+    }
+  }*/
+  checkMultiple() {
+  const selected = this.answerMulti.value;
+  const answers = this.question()?.answers ?? [];
+
+  for (const answer of answers) {
+    const isSelected = selected['answer${answer.id}' as keyof typeof selected];
+
+    if (isSelected && answer.isCorrect) {
+      answer.state = 'correct';
     }
   }
+}
 }
