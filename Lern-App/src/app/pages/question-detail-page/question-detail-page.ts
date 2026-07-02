@@ -24,11 +24,12 @@ export class QuestionDetailPage {
   #questionsAndAnswers = inject(QuestionsAndAnswers);
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
-  protected isChecked = false;
   protected topicId!: string;
   protected catalogId!: string;
   protected previousQuestionId!: number;
   protected nextQuestionId!: number;
+  protected inputAnswer!: string;
+  protected inputAnswers: string[] = [];
 
   constructor() {
     this.#route.paramMap.subscribe(params => {
@@ -71,6 +72,10 @@ export class QuestionDetailPage {
     answer4: new FormControl(false),
     answer5: new FormControl(false),
   });
+  answerTextInput = new FormGroup({
+    answer: new FormControl(''),
+  });
+
   checkAnswer() {
     const answerId = this.answerSingle.value.answer;
     if (answerId === null) {
@@ -88,7 +93,6 @@ export class QuestionDetailPage {
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
     const answer = this.question()?.answers.find((a) => a.id === answerId)!;
-    this.isChecked = true
     if (answer.isCorrect) {
       answer.state = 'correct';
     }
@@ -132,5 +136,16 @@ export class QuestionDetailPage {
       answer.state = '';
     }
   }
+  }
+  checkInput(){
+    const answerId = this.answerTextInput.value.answer?.toLowerCase();
+    const answers = this.question()?.answers ?? [];
+    this.inputAnswer = answers.some(answer => answer.answerText.toLowerCase() === answerId) ? 'Es ist korrekt! =)' : 'Die Antwort ist falsch... =*(';
 }
+  correctInput(){
+    const answers = this.question()?.answers ?? [];
+    this.inputAnswers = answers;
+
+
+  }
 }
