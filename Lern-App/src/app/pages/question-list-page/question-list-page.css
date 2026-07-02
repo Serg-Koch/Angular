@@ -1,10 +1,10 @@
 .question-list-headline {
-    margin-top: 50px;
+    margin-top: 3rem;
     margin-bottom: 30px;
     text-align: center;
     color: #1f241c;
     font-weight: 700;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .question-list-headline-button-card {
@@ -51,7 +51,7 @@
 }
 
 .question-list-question-number {
-    flex: 0 0 50px;
+    flex: 0 0 40px;
     color: #2e3b24;
     font-weight: 650;
 }
@@ -74,6 +74,7 @@
 
 .question-list-answer-number {
     text-align: center;
+    align-self: flex-start;
     flex: 0 0 40px;
     margin-left: 5px;
     border: solid 1px #b9c4aa;
@@ -108,4 +109,27 @@
 .list-card-button:hover {
     background-color: #43563c;
     color: #ffffff;
+}
+
+.question-list-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    background-color: #4f6547;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.question-list-to-top:hover {
+    background-color: #43563c;
+    transform: translateY(-3px);
 }

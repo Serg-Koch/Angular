@@ -5,9 +5,9 @@
     "questionText": "Was ist der dritte Zustand eines boolean?",
     "answers": [
       { "id": 1, "answerText": "Wenn keiner gewinnt", "isCorrect": false},
-      { "id": 2, "answerText": "Die dritte Kuh", "isCorrect": false},
+      { "id": 2, "answerText": "Der dritte Bulle", "isCorrect": false},
       { "id": 3, "answerText": "jain", "isCorrect": false},
-      { "id": 4, "answerText": "Es gibt keinen dritten", "isCorrect": true},
+      { "id": 4, "answerText": "Es gibt keinen dritten Zustand", "isCorrect": true},
       { "id": 5, "answerText": "null", "isCorrect": false}
     ],
     "hint": ""
@@ -24,7 +24,7 @@
     ],
     "hint": ""
   },
-   {
+  {
     "id": 3,
     "type": "fi",
     "questionText": "Which command will display messages from the kernel that were output during the normal boot sequence?",

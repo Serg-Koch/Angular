@@ -2,15 +2,18 @@
 <div class="catalog-list-back-button-container mt-5">
     <a class="btn catalog-list-back-button" [routerLink]="['/']">Zurück zur Themenauswahl</a>
 </div>
-<p class="catalog-list mt-3">Wählen Sie einen Katalog aus, um mit dem Lernen zu beginnen</p>
+<p class="catalog-list mt-4">Wählen Sie einen Katalog aus und lassen Sie sich die entsprechende Fragenliste anzeigen</p>
 <section class="catalog-list-box">
+    @if (hasError()) {
+        <div class="catalog-list-card">
+            Daten konnten nicht geladen werden!
+        </div>
+    } @else {
     @for (catalog of catalogs(); track catalog.id) {
-    <div class="catalog-list-card">
+    <div class="catalog-list-card" [routerLink]="['/topics', topicId, 'catalogs', catalog.id, 'list']">
         <p class="catalog-list-card-title">{{catalog.title}}</p>
         <p>{{catalog.description}}</p>
-        <a class="btn btn-lg catalog-list-button" [routerLink]="['/topics', topicId, 'catalogs', catalog.id, 'list']">
-            Fragenliste anzeigen
-        </a>
     </div>
+    }
     }
 </section>

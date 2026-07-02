@@ -1,9 +1,11 @@
 <h1 class="topic-list topic-list-title">DC-Lernprogramm</h1>
 
-<p class="topic-list mt-5">Willkommen im Druschba-Coder-Lernprogramm! Mit diesem Programm können Sie gezielt lernen und
-    sich auf Prüfungen vorbereiten.</p>
-
-<p class="topic-list mt-5">Wählen Sie ein Thema aus.</p>
+<p class="topic-list mt-5">Willkommen und dobro pozhalovat' im Druschba-Coder-Lernprogramm!</p>
+<p class="topic-list">Mit diesem Programm können Sie gezielt Themen lernen und sich auf Prüfungen vorbereiten.</p>
+<div>
+<img class="topic-list-bild" src="/logo2.png" alt="Logo Druschba-Coder">
+</div>
+<p class="topic-list mt-5">Wählen Sie ein Thema aus</p>
 <section class="topic-list-box">
     @if (hasError()) {
     <div class="topic-list-card">
@@ -11,11 +13,11 @@
     </div>
     } @else {
     @for (topic of topics(); track topic.id) {
-    <div class="topic-list-card">
+    <a class="topic-list-card" [routerLink]="['/topics', topic.id, 'catalogs']">
         <div class="topic-list-card-title">{{topic.title}}</div>
         <div class="topic-list-card-description">{{topic.description}}</div>
-        <a class="btn topic-list-button" [routerLink]="['/topics', topic.id, 'catalogs']">auswählen</a>
-    </div>
+        
+    </a>
     }
     }
 </section>

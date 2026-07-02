@@ -16,6 +16,7 @@ export class CatalogListPage {
 
   catalogs = signal<Catalog[]>([]);
   topicId = this.route.snapshot.paramMap.get('topicId');
+  hasError = signal(false);
 
 constructor() {
     this.http.get<Catalog[]>(`http://localhost:5100/topics/${this.topicId}/catalogs`)

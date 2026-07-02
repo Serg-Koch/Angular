@@ -7,7 +7,7 @@
 @for(question of questions(); track question.id){
 <div class="question-list-card">
     <div class="question-list-question-card">
-        <div class="question-list-question-number"># {{question.id}}</div>
+        <div class="question-list-question-number">#{{question.id}}</div>
         <div class="question-list-question">{{question.questionText}}</div>
     </div>
     @for (answer of question.answers; track answer.id){
@@ -23,8 +23,9 @@
     <div class="question-list-card-buttons">
         <a class="btn list-card-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', question.id]">Öffnen</a>
         
-        <!--<a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>-->
+        <!-- <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a> -->
 
     </div>
 </div>
+<a href="#top" class="question-list-to-top">&uarr;</a>
 }

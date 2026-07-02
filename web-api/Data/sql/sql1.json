@@ -8,7 +8,7 @@
       { "id": 2, "answerText": "auch nicht hier", "isCorrect": false},
       { "id": 3, "answerText": "bitte nicht hier", "isCorrect": false},
       { "id": 4, "answerText": "drücke hier", "isCorrect": true},
-      { "id": 5, "answerText": "auf keinen Fall hier", "isCorrect": false}
+      { "id": 5, "answerText": "auf keinen Fall hier drücken", "isCorrect": false}
     ],
     "hint": ""
   },
@@ -24,7 +24,7 @@
     ],
     "hint": ""
   },
-   {
+  {
     "id": 3,
     "type": "fi",
     "questionText": "Which command will display messages from the kernel that were output during the normal boot sequence?",
