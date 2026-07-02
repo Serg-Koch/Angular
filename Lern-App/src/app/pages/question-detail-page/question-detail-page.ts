@@ -76,7 +76,7 @@ export class QuestionDetailPage {
     console.log(answerId);
     const que = this.question()?.answers!;
     for (const q of que) {
-      const selected = answerId[a as keyof typeof answerId];
+      const selected = answerId['answer${q.id}' as keyof typeof answerId];
       if (selected && q.isCorrect) q.state = 'correct';
       else if (selected && !q.isCorrect) q.state = 'wrong';
     }

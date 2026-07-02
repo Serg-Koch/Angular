@@ -21,18 +21,6 @@
     }
     }
     <div class="question-list-card-buttons">
-        <a class="btn list-card-button" [routerLink]="['/list', level, 'details', question.id]">Öffnen</a>
-        <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>
-
-        @if (question.type !== "fi"){
-        <div class="question-list-answer-card">
-
-            <div class="question-list-answer-number">{{answer.id}}</div>
-            <div class="question-list-answer">{{answer.answerText}}</div>
-        </div>
-        }
-    </div>
-    <div class="question-list-card-buttons">
         <a class="btn list-card-button"
             [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', question.id]">Öffnen</a>
 
