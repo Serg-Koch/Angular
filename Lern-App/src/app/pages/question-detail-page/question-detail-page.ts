@@ -24,6 +24,7 @@ export class QuestionDetailPage {
   #questionsAndAnswers = inject(QuestionsAndAnswers);
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
+  protected isChecked = false;
   constructor() {
     const topicId = this.#route.snapshot.paramMap.get('topicId')!;
     const catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
@@ -46,7 +47,6 @@ export class QuestionDetailPage {
   });
   checkAnswer() {
     const answerId = this.answerSingle.value.answer;
-    console.log(answerId);
     if (answerId === null) {
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
@@ -58,11 +58,13 @@ export class QuestionDetailPage {
   }
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
-    const q = this.question()?.answers.find((a) => a.id === answerId)!;
-    if (q.isCorrect) {
-      q.state = 'correct';
-    } else {
-      q.state = 'wrong';
+    const answer = this.question()?.answers.find((a) => a.id === answerId)!;
+    this.isChecked = true;
+    if (answer.isCorrect) {
+      answer.state = 'correct';
+    }
+    else {
+      answer.state = 'wrong';
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
         if (answer.isCorrect) {

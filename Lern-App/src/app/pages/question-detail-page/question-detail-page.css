@@ -68,7 +68,7 @@
 .question-detail-answer-card:has(input:checked) {
   background-color: #C8E2B0;
   border-color: #7FA15D;
-}
+
 
 .question-detail-answer-card-eingabe {
   display: flex;
@@ -93,7 +93,7 @@
 
 .eingabefeld:focus {
   outline: none;
-  border: solid 1px #000000;
+  border:solid 1px #000000;
   box-shadow: 0 0 0 4px rgba(92, 104, 79, 0.25);
 }
 
