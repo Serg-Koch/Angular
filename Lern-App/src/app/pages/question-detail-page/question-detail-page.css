@@ -69,7 +69,18 @@
   background-color: #C8E2B0;
   border-color: #7FA15D;
 }
-
+.question-detail-answer-card:has(input:checked).correct {
+  background-color: lightgreen;
+  border: solid 1px #222222;
+}
+.question-detail-answer-card:has(input:checked).wrong {
+  background-color: lightcoral;
+  border: solid 1px #222222;
+}
+.question-detail-answer-card:has(input:checked).default {
+  background-color: #e7ede1;
+  border: solid 1px #d8dec9;
+}
 
 .question-detail-answer-card-eingabe {
   display: flex;

@@ -46,15 +46,15 @@ export class QuestionDetailPage {
     answer6: new FormControl(false),
   });
   checkAnswer() {
-    const answerId = this.answerSingle.value.answer;
-    if (answerId === null) {
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
         if (answer.isCorrect) {
           answer.state = 'correct';
         }
+        else
+          answer.state = 'default';
       }
-    }
+    //}
   }
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
