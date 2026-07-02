@@ -13,8 +13,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
 
-
-
 @Component({
   selector: 'app-question-detail-page',
   imports: [ReactiveFormsModule, NgClass],
@@ -22,20 +20,20 @@ import { NgClass } from '@angular/common';
   styleUrl: './question-detail-page.css',
 })
 export class QuestionDetailPage {
-
   #route = inject(ActivatedRoute);
-  #questionsAndAnswers = inject(QuestionsAndAnswers)
+  #questionsAndAnswers = inject(QuestionsAndAnswers);
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
   constructor() {
     const topicId = this.#route.snapshot.paramMap.get('topicId')!;
     const catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
     const id = this.#route.snapshot.paramMap.get('id')!;
-    this.#questionsAndAnswers.getAll(topicId, catalogId).subscribe(questions => {
+    this.#questionsAndAnswers.getAll(topicId, catalogId).subscribe((questions) => {
       this.questions.set(questions);
-      this.question.set(questions.find(q => q.id === Number(id))!);
-    })
+      this.question.set(questions.find((q) => q.id === Number(id))!);
+    });
   }
+<<<<<<< HEAD
 answerSingle = new FormGroup({
   answer: new FormControl('')
 });
@@ -89,3 +87,54 @@ checkMultiple(){
     }
   }
 }
+=======
+
+  answerSingle = new FormGroup({
+    answer: new FormControl(''),
+  });
+  answerMulti = new FormGroup({
+    answer1: new FormControl(false),
+    answer2: new FormControl(false),
+    answer3: new FormControl(false),
+    answer4: new FormControl(false),
+    answer5: new FormControl(false),
+    answer6: new FormControl(false),
+  });
+  checkAnswer() {
+    const answerId = Number(this.answerMulti.value);
+    if (answerId === 0) {
+      const allAnswers = this.question()?.answers!;
+      for (const answer of allAnswers) {
+        if (answer.isCorrect) {
+          answer.state = 'correct';
+        }
+      }
+    }
+  }
+  checkSingle() {
+    const answerId = Number(this.answerSingle.value.answer);
+    const q = this.question()?.answers.find((a) => a.id === answerId)!;
+    if (q.isCorrect) {
+      q.state = 'correct';
+    } else {
+      q.state = 'wrong';
+      const allAnswers = this.question()?.answers!;
+      for (const answer of allAnswers) {
+        if (answer.isCorrect) {
+          answer.state = 'correct';
+        }
+      }
+    }
+  }
+  checkMultiple() {
+    const answerId = this.answerMulti.value;
+    console.log(answerId);
+    const que = this.question()?.answers!;
+    for (const q of que) {
+      const selected = answerId[a as keyof typeof answerId];
+      if (selected && q.isCorrect) q.state = 'correct';
+      else if (selected && !q.isCorrect) q.state = 'wrong';
+    }
+  }
+}
+>>>>>>> origin/Sergey
