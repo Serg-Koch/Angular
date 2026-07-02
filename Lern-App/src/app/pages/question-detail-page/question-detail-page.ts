@@ -15,7 +15,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-question-detail-page',
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './question-detail-page.html',
   styleUrl: './question-detail-page.css',
 })
@@ -25,15 +25,42 @@ export class QuestionDetailPage {
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
   protected isChecked = false;
+  protected topicId!: string;
+  protected catalogId!: string;
+  protected previousQuestionId!: number;
+  protected nextQuestionId!: number;
+
   constructor() {
-    const topicId = this.#route.snapshot.paramMap.get('topicId')!;
-    const catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
-    const id = this.#route.snapshot.paramMap.get('id')!;
-    this.#questionsAndAnswers.getAll(topicId, catalogId).subscribe((questions) => {
-      this.questions.set(questions);
-      this.question.set(questions.find((q) => q.id === Number(id))!);
+    this.#route.paramMap.subscribe(params => {
+      this.topicId = params.get('topicId')!;
+      this.catalogId = params.get('catalogId')!;
+      const id = Number(params.get('id'));
+
+      this.loadQuestion(id);
     });
   }
+
+  private loadQuestion(id: number) {
+    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
+      this.questions.set(questions);
+
+      const currentQuestion = questions.find((q) => q.id === id)!;
+      this.question.set(currentQuestion);
+      const currentIndex = questions.findIndex((q) => q.id === id);
+
+      const previousIndex = currentIndex === 0
+        ? questions.length - 1
+        : currentIndex - 1;
+
+      const nextIndex = currentIndex === questions.length - 1
+        ? 0
+        : currentIndex + 1;
+
+      this.previousQuestionId = questions[previousIndex].id;
+      this.nextQuestionId = questions[nextIndex].id;
+    });
+  }
+
   answerSingle = new FormGroup({
     answer: new FormControl(null),
   });
