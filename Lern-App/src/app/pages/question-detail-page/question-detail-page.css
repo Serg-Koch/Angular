@@ -68,6 +68,7 @@
 .question-detail-answer-card:has(input:checked) {
   background-color: #C8E2B0;
   border-color: #7FA15D;
+}
 
 
 .question-detail-answer-card-eingabe {
