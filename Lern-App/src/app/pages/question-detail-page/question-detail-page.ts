@@ -15,7 +15,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-question-detail-page',
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './question-detail-page.html',
   styleUrl: './question-detail-page.css',
 })
@@ -25,11 +25,14 @@ export class QuestionDetailPage {
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
   protected isChecked = false;
+  protected topicId!: string;
+  protected catalogId!: string;
+
   constructor() {
-    const topicId = this.#route.snapshot.paramMap.get('topicId')!;
-    const catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
+    this.topicId = this.#route.snapshot.paramMap.get('topicId')!;
+    this.catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
     const id = this.#route.snapshot.paramMap.get('id')!;
-    this.#questionsAndAnswers.getAll(topicId, catalogId).subscribe((questions) => {
+    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
       this.questions.set(questions);
       this.question.set(questions.find((q) => q.id === Number(id))!);
     });

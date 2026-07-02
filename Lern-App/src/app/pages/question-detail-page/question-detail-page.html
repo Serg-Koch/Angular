@@ -2,7 +2,7 @@
 <h1 class="question-detail-title">Einzelfragen</h1>
 <section class="question-detail-card">
     <article class="question-detail-question-card">
-        <div class="question-detail-question-number"># {{q.id}}</div>
+        <div class="question-detail-question-number">#{{q.id}}</div>
         <div class="question-detail-question">{{q.questionText}}</div>
     </article>
     @switch (q.type) {
@@ -23,7 +23,7 @@
                 (click)="checkSingle()">Überprüfen</button>
             <button class="btn question-detail-button" type="button"
                 (click)="checkAnswer()">Lösung</button>
-            <!-- <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a> -->
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a>
         </div>
     </form>
     }
@@ -42,7 +42,7 @@
                 (click)="checkMultiple()">Überprüfen</button>
             <button class="btn question-detail-button" type="button"
                 (click)="checkAnswer()">Lösung</button>
-            <!-- <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a> -->
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a>
         </div>
     </form>
     }
@@ -56,7 +56,7 @@
                     <div class="question-detail-button-card">
                         <button class="btn question-detail-button" type="button">Überprüfen</button>
                         <button class="btn question-detail-button" type="button">Lösung</button>
-                        <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur Liste</a>
+                        <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']" [fragment]="'question-' + q.id">Zur Liste</a>
                     </div>
                 </form> -->
     }
