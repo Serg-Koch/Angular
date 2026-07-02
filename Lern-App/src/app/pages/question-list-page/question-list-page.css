@@ -71,11 +71,16 @@
     border: solid 1px #d8dec9;
     color: #1f241c;
 
-}.question-list-answer-card.correct{
-  background-color: lightgreen;
 }
-.question-list-answer-card.wrong{
-  background-color: rgb(255, 76, 76);
+
+.question-list-answer-card.correct {
+    background-color: #3E6B4A;
+    border: solid 1px #222222;
+}
+
+.question-list-answer-card.wrong {
+    background-color: #9b3d2f;
+    border: solid 1px #222222;
 }
 
 .question-list-answer-number {

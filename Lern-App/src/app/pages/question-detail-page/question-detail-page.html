@@ -2,21 +2,21 @@
 <h1 class="question-detail-title">Einzelfragen</h1>
 <section class="question-detail-card">
     <article class="question-detail-question-card">
-        <div class="question-detail-question-number">{{q.id}}</div>
+        <div class="question-detail-question-number"># {{q.id}}</div>
         <div class="question-detail-question">{{q.questionText}}</div>
         </article>
         @switch (q.type) {
             @case ('sc') {
-            <p class="fragentyp">Single Choice</p>
+            <p class="fragentyp">Single-Choice-Frage</p>
             <form [formGroup]="answerSingle">
                 @for(answer of q.answers; track answer.id){
-                <article class="question-detail-answer-card" [ngClass]="answer.state">
-                    <input type="radio" formControlName="answer" [value]="answer.id">
-                    <label>
-                        <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
-                        <div class="question-detail-answer">{{answer.answerText}}</div>
-                    </label>
-                </article>
+                 <label class="question-detail-answer-card" [ngClass]="answer.state">
+            <input class="question-detail-radio" type="radio" formControlName="answer" [value]="answer.id">
+            <div class="question-detail-answer-number">{{answer.id}}</div>
+            <div class="question-detail-answer">
+                {{ answer.answerText }}
+            </div>
+        </label>
                 }
                 <div class="question-detail-button-card">
                     <button class=" btn btn-secondary question-detail-button" type="button"
@@ -28,16 +28,14 @@
             </form>
             }
             @case ('mc') {
-            <p class="fragentyp">Multiple Choice</p>
+            <p class="fragentyp">Multiple-Choice-Frage</p>
             <form [formGroup]="answerMulti">
                 @for(answer of q.answers; track answer.id){
-                <article class="question-detail-answer-card" [ngClass]="answer.state">
-                    <input type="checkbox" [formControlName]="'answer' + answer.id">
-                    <label>
-                        <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
+                <label class="question-detail-answer-card" [ngClass]="answer.state">
+                    <input type="checkbox" [formControlName]="'answer' + answer.id" class="question-detail-checkbox">
+                        <div class="question-detail-answer-number">{{answer.id}}</div>
                         <div class="question-detail-answer">{{answer.answerText}}</div>
-                    </label>
-                </article>
+                </label>
                 }
                 <div class="question-detail-button-card">
                     <button class=" btn btn-secondary question-detail-button" type="button"
@@ -49,9 +47,9 @@
                 </form>
             }
             @default {
-                <!--<p class="fragentyp">Eingabenfrage</p>
-                <form [formGroup]="answerCheck">
-                    <form>
+                <p class="fragentyp">Eingabenfrage</p>
+                <!-- <form [formGroup]="answerCheck">
+                  
                     <div class="question-detail-answer-card-eingabe">
                         <input id="answer" type="text" formControlName="answer" placeholder="Gib hier die Antwort ein ..."
                             class="eingabefeld">
@@ -61,7 +59,7 @@
                         <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
                         <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
                     </div>
-                </form>-->
+                </form> -->
                 }
                 }
 </section>

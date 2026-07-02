@@ -93,7 +93,7 @@
 
 .eingabefeld:focus {
   outline: none;
-  border:solid 1px #000000;
+  border: solid 1px #000000;
   box-shadow: 0 0 0 4px rgba(92, 104, 79, 0.25);
 }
 
@@ -107,12 +107,12 @@
 
 .question-detail-answer-card.correct {
   background-color: #3E6B4A;
-   border: solid 1px #222222;
+  border: solid 1px #222222;
 }
 
 .question-detail-answer-card.wrong {
   background-color: #9b3d2f;
-   border: solid 1px #222222;
+  border: solid 1px #222222;
 }
 
 
