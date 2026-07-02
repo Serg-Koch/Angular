@@ -6,8 +6,8 @@
     "answers": [
       { "id": 1, "answerText": "Eine Verletzung", "isCorrect": false},
       { "id": 2, "answerText": "Anderes Wort für Strick", "isCorrect": false},
-      { "id": 3, "answerText": "Ein Tier", "isCorrect": false},
-      { "id": 4, "answerText": "Eine Variable", "isCorrect": true},
+      { "id": 3, "answerText": "Eine Variable", "isCorrect": true},
+      { "id": 4, "answerText": "Ein Tier", "isCorrect": false},
       { "id": 5, "answerText": "Ein Ort an dem Prosituierte stehen", "isCorrect": false}
     ],
     "hint": ""
