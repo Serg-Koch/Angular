@@ -1,6 +1,6 @@
 .header {
     background-color: #2e3b24;
-    
+
     border-bottom: 4px solid #1f241c;
 }
 
@@ -21,11 +21,11 @@
     margin-left: 10px;
     height: 42px;
     width: auto;
-  
+
 }
 
 .logo:hover {
-  scale: 1.1;
+    scale: 1.1;
 }
 
 .sticky {
@@ -58,11 +58,13 @@
     border: 1px solid #000;
     border-radius: 8px;
     margin: 4px;
+
 }
 
 .start:hover {
     scale: 1.1;
     background-color: #4e643d;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.42);
 }
 
 :host {

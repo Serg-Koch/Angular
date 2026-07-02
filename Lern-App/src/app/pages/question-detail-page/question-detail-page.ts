@@ -27,16 +27,40 @@ export class QuestionDetailPage {
   protected isChecked = false;
   protected topicId!: string;
   protected catalogId!: string;
+  protected previousQuestionId!: number;
+  protected nextQuestionId!: number;
 
   constructor() {
-    this.topicId = this.#route.snapshot.paramMap.get('topicId')!;
-    this.catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
-    const id = this.#route.snapshot.paramMap.get('id')!;
-    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
-      this.questions.set(questions);
-      this.question.set(questions.find((q) => q.id === Number(id))!);
+    this.#route.paramMap.subscribe(params => {
+      this.topicId = params.get('topicId')!;
+      this.catalogId = params.get('catalogId')!;
+      const id = Number(params.get('id'));
+
+      this.loadQuestion(id);
     });
   }
+
+  private loadQuestion(id: number) {
+    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
+      this.questions.set(questions);
+
+      const currentQuestion = questions.find((q) => q.id === id)!;
+      this.question.set(currentQuestion);
+      const currentIndex = questions.findIndex((q) => q.id === id);
+
+      const previousIndex = currentIndex === 0
+        ? questions.length - 1
+        : currentIndex - 1;
+
+      const nextIndex = currentIndex === questions.length - 1
+        ? 0
+        : currentIndex + 1;
+
+      this.previousQuestionId = questions[previousIndex].id;
+      this.nextQuestionId = questions[nextIndex].id;
+    });
+  }
+
   answerSingle = new FormGroup({
     answer: new FormControl(null),
   });
@@ -49,14 +73,14 @@ export class QuestionDetailPage {
     answer6: new FormControl(false),
   });
   checkAnswer() {
-      const allAnswers = this.question()?.answers!;
-      for (const answer of allAnswers) {
-        if (answer.isCorrect) {
-          answer.state = 'correct';
-        }
-        else
-          answer.state = 'default';
+    const allAnswers = this.question()?.answers!;
+    for (const answer of allAnswers) {
+      if (answer.isCorrect) {
+        answer.state = 'correct';
       }
+      else
+        answer.state = 'default';
+    }
     //}
   }
   checkSingle() {
