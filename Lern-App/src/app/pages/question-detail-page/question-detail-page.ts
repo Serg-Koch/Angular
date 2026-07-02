@@ -34,7 +34,7 @@ export class QuestionDetailPage {
     });
   }
   answerSingle = new FormGroup({
-    answer: new FormControl(''),
+    answer: new FormControl(null),
   });
   answerMulti = new FormGroup({
     answer1: new FormControl(false),
@@ -45,8 +45,9 @@ export class QuestionDetailPage {
     answer6: new FormControl(false),
   });
   checkAnswer() {
-    const answerId = Number(this.answerMulti.value);
-    if (answerId === 0) {
+    const answerId = this.answerSingle.value.answer;
+    console.log(answerId);
+    if (answerId === null) {
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
         if (answer.isCorrect) {
