@@ -14,7 +14,7 @@ import { NgClass } from '@angular/common';
 })
 export class QuestionListPage {
   #route = inject(ActivatedRoute);
-  #questionsAndAnswers = inject(QuestionsAndAnswers);
+  #questionsAndAnswers = inject(QuestionsAndAnswers)
   protected questions = signal<Question[]>([]);
   protected topicId!: string;
   protected catalogId!: string;
@@ -22,12 +22,24 @@ export class QuestionListPage {
   constructor() {
     this.topicId = this.#route.snapshot.paramMap.get('topicId')!;
     this.catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
-    console.log('topicId:', this.topicId);
-    console.log('catalogId:', this.catalogId);
+console.log('topicId:', this.topicId);
+console.log('catalogId:', this.catalogId);
 
-    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
+    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe(questions => {
       this.questions.set(questions);
+<<<<<<< HEAD
 
     });
+=======
+    })
+  }
+  showCorrectAnswer(id: number) {
+    const question = this.questions().find((q) => q.id === id)!;
+    for (const answer of question.answers) {
+      if (answer.isCorrect) {
+        answer.state = 'correct';
+      }
+    }
+>>>>>>> origin/Sergey
   }
 }
