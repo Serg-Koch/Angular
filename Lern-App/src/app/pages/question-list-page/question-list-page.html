@@ -21,11 +21,13 @@
     }
     }
     <div class="question-list-card-buttons">
+        <a class="btn list-card-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', question.id]">Öffnen</a>
+        <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>
+    </div>
+    <div class="question-list-card-buttons">
         <a class="btn list-card-button"
             [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', question.id]">Öffnen</a>
-
         <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">Lösung anzeigen</a>
-
     </div>
 </div>
 <a href="#top" class="question-list-to-top">&uarr;</a>
