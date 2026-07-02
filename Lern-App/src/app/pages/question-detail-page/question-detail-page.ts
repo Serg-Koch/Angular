@@ -76,7 +76,10 @@ export class QuestionDetailPage {
     if (answerId === null) {
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
-        if (answer.isCorrect) {
+        if(answer.state == 'correct'){
+          answer.state = 'default';
+        }
+        else if (answer.isCorrect) {
           answer.state = 'correct';
         }
       }
@@ -117,10 +120,16 @@ export class QuestionDetailPage {
   const answers = this.question()?.answers ?? [];
 
   for (const answer of answers) {
-    const isSelected = selected['answer${answer.id}' as keyof typeof selected];
-
+    const isSelected = selected[`answer${answer.id}` as keyof typeof selected];
     if (isSelected && answer.isCorrect) {
       answer.state = 'correct';
+    }
+    else if (isSelected && !answer.isCorrect)
+    {
+      answer.state = 'wrong';
+    }
+    else{
+      answer.state = '';
     }
   }
 }
