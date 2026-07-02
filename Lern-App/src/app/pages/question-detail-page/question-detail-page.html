@@ -1,32 +1,30 @@
 @if (question(); as q) {
 <h1 class="question-detail-title">Einzelfragen</h1>
     <section class="question-detail-card">
-    <article class="question-detail-question-card">
-        <div class="question-detail-question-number"># {{q.id}}</div>
-        <div class="question-detail-question">{{q.questionText}}</div>
-    </article>
-    @switch (q.type) {
-    @case ('sc') {
-    <p class="fragentyp">Single-Choice-Frage</p>
-    <form [formGroup]="answerCheck">
-        @for (answer of q.answers; track answer.id) {
-        <label class="question-detail-answer-card" [ngClass]="answer.state">
-            <input class="question-detail-radio" type="radio" formControlName="answer" [value]="answer.id">
-            <div class="question-detail-answer-number">{{answer.id}}</div>
-            <div class="question-detail-answer">
-                {{ answer.answerText }}
-            </div>
-        </label>
-        }
-        <div class="question-detail-button-card">
-            <button class=" btn btn-secondary question-detail-button" type="button"
-                (click)="checkSingle()">Überprüfen</button>
-            <button class="btn btn-secondary question-detail-button" type="button"
-                (click)="checkAnswer()">Lösung</button>
-            <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
-        </div>
-    </form>
-    }
+            <article class="question-detail-question-card">
+                <div class="question-detail-question-number">{{q.id}}</div>
+                <div class="question-detail-question">{{q.questionText}}</div>
+            </article>
+            @switch (q.type) {
+                  @case ('sc') {
+                    <p class="fragentyp">Single Choice</p>
+                    <form [formGroup]="answerSingle">
+                    @for(answer of q.answers; track answer.id){
+                    <article class="question-detail-answer-card" [ngClass]="answer.state">
+                        <input type="radio" formControlName="answer" [value]="answer.id">
+                        <label>
+                            <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
+                            <div class="question-detail-answer" >{{answer.answerText}}</div>
+                        </label>
+                    </article>
+                    }
+                    <div class="question-detail-button-card">
+                        <button class=" btn btn-secondary question-detail-button" type="button" (click)="checkSingle()">Überprüfen</button>
+                        <button class="btn btn-secondary question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
+                        <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
+                    </div>
+                    </form>
+                  }
     @case ('mc') {
     <p class="fragentyp">Multiple-Choice-Frage</p>
     <form action="#">
@@ -42,8 +40,8 @@
         </label>
         }
         <div class="question-detail-button-card">
-            <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
-            <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
+            <button class=" btn btn-secondary question-detail-button" type="button" (click)="checkMultiple()">Überprüfen</button>
+                <button class="btn btn-secondary question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
             <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
         </div>
     </form>

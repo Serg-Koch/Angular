@@ -3,11 +3,12 @@ import { Question } from '../../shared/question';
 import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
 import { ActivatedRoute } from '@angular/router';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-question-list-page',
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './question-list-page.html',
   styleUrl: './question-list-page.css',
 })
@@ -40,5 +41,6 @@ console.log('catalogId:', this.catalogId);
         answer.isShowed = false;
       }
     }
-  }*/
+  }
 }
+*/}
