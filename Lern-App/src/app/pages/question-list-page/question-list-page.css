@@ -74,12 +74,12 @@
 }
 
 .question-list-answer-card.correct {
-    background-color: #3E6B4A;
+    background-color: lightgreen;
     border: solid 1px #222222;
 }
 
 .question-list-answer-card.wrong {
-    background-color: #9b3d2f;
+    background-color: lightcoral;
     border: solid 1px #222222;
 }
 

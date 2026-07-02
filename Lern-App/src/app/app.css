@@ -1,14 +1,31 @@
 .header {
     background-color: #2e3b24;
-    padding: 1rem;
+    
     border-bottom: 4px solid #1f241c;
+}
 
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-self: start;
 }
 
 .logo {
     margin-left: 10px;
     height: 42px;
     width: auto;
+  
+}
+
+.logo:hover {
+  scale: 1.1;
 }
 
 .sticky {
@@ -24,7 +41,28 @@
     font-size: 1.3rem;
     font-weight: 550;
     margin-left: 5px;
+}
 
+.header-link:hover {
+    scale: 1.1;
+}
+
+.start {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 650;
+    letter-spacing: 0.36rem;
+    justify-self: center;
+    padding: 4px 12px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    margin: 4px;
+}
+
+.start:hover {
+    scale: 1.1;
+    background-color: #4e643d;
 }
 
 :host {
@@ -45,4 +83,12 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+.page-footer {
+    background-color: #f6f4ec;
+    color: #999999;
+    text-align: center;
+    border-top: 1px solid #bbbbbb;
+    padding: 10px;
 }
