@@ -27,10 +27,6 @@ console.log('catalogId:', this.catalogId);
 
     this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe(questions => {
       this.questions.set(questions);
-<<<<<<< HEAD
-
-    });
-=======
     })
   }
   showCorrectAnswer(id: number) {
@@ -40,6 +36,5 @@ console.log('catalogId:', this.catalogId);
         answer.state = 'correct';
       }
     }
->>>>>>> origin/Sergey
   }
 }
