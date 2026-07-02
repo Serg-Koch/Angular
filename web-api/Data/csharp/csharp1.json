@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "type": "sc",
+    "questionText": "Was ist ein string?",
+    "answers": [
+      { "id": 1, "answerText": "Eine Verletzung", "isCorrect": false},
+      { "id": 2, "answerText": "Anderes Wort für Strick", "isCorrect": false},
+      { "id": 3, "answerText": "Ein Tier", "isCorrect": false},
+      { "id": 4, "answerText": "Eine Variable", "isCorrect": true},
+      { "id": 5, "answerText": "Ein Ort an dem Prosituierte stehen", "isCorrect": false}
+    ],
+    "hint": ""
+  },
+  {
+    "id": 2,
+    "type": "sc",
+    "questionText": "Which of the following statements is correct when talking about /proc/?",
+    "answers": [
+      { "id": 1, "answerText": "All changes to files in /proc/ are stored in /etc/proc.d/ and restored on reboot.", "isCorrect": false},
+      { "id": 2, "answerText": "All files within /proc/ are read-only and their contents cannot be changed.", "isCorrect": false},
+      { "id": 3, "answerText": "All changes to files in /proc/ are immediately recognized by the kernel.", "isCorrect": true},
+      { "id": 4, "answerText": "All files within /proc/ are only readable by the root user.", "isCorrect": false}
+    ],
+    "hint": ""
+  },
+   {
+    "id": 3,
+    "type": "fi",
+    "questionText": "Which command will display messages from the kernel that were output during the normal boot sequence?",
+    "answers": [
+      { "id": 1, "answerText": "dmesg", "isCorrect": true },
+      { "id": 2, "answerText": "/bin/dmesg", "isCorrect": true }
+    ],
+    "hint": ""
+  },
+  {
+    "id": 4,
+    "type": "mc",
+    "questionText": "Which of the following are init systems used within Linux systems? (Choose THREE correct answers.)",
+    "answers": [
+      { "id": 1, "answerText": "startd", "isCorrect": false},
+      { "id": 2, "answerText": "systemd", "isCorrect": true},
+      { "id": 3, "answerText": "Upstart", "isCorrect": true},
+      { "id": 4, "answerText": "SysInit", "isCorrect": false},
+      { "id": 5, "answerText": "SysV init", "isCorrect": true}
+    ],
+    "hint": ""
+  }
+]

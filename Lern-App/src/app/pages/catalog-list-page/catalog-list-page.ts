@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject, signal } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Catalog } from '../../shared/catalog';
 
 
 @Component({
@@ -9,4 +11,19 @@ import { RouterLink } from '@angular/router';
   styleUrl: './catalog-list-page.css',
 })
 export class CatalogListPage {
+  private http = inject(HttpClient);
+  private route = inject(ActivatedRoute);
+
+  catalogs = signal<Catalog[]>([]);
+  topicId = this.route.snapshot.paramMap.get('topicId');
+  hasError = signal(false);
+
+constructor() {
+    this.http.get<Catalog[]>(`http://localhost:5100/topics/${this.topicId}/catalogs`)
+    .subscribe(catalogs => {
+      this.catalogs.set(catalogs);
+    });
+  }
 }
+
+

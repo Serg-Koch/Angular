@@ -1,0 +1,20 @@
+[
+    {
+        "id": "csharp1",
+        "title": "C# Lektion 1",
+        "description": "C# für Dummies",
+        "file": "csharp1.json"
+    },
+    {
+        "id": "csharp2",
+        "title": "C# Lektion 2",
+        "description": "C# für richtige Dummies",
+        "file": "csharp2.json"
+    },
+    {
+        "id": "csharp3",
+        "title": "C# Lektion 3",
+        "description": "C# wenn du richtig dumm bist",
+        "file": "csharp3.json"
+    }
+]

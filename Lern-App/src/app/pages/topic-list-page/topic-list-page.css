@@ -1,55 +1,79 @@
 .topic-list {
     text-align: center;
     color: #1F241C;
-
+font-weight: 500;
 }
 
 .topic-list-title {
-    font-size: 4rem;
-    margin-top: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-top: 2rem;
     color: #1F241C;
     font-weight: 700;
 }
 
+.topic-list-bild {
+    display: block;
+margin: auto;
+    width: 320px;
+}
+
 .topic-list-box {
     display: flex;
+    flex-direction: column;
     text-align: center;
     gap: 20px;
     margin-top: 25px;
-    padding: 40px 30px;
+    margin-bottom: 25px;
+    padding: 30px 20px;
     background-color: #ffffff;
     border: solid 1px #d8dec9;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(46, 59, 36, 0.10);
+    box-shadow: 8px 8px 24px rgba(46, 59, 36, 0.12);
 }
 
 .topic-list-card {
     display: flex;
-    flex: 1;
+    text-decoration: none;
+    cursor: pointer;
+    gap: 20px;
     align-items: center;
-    margin: 10px 10px;
-    padding: 10px 10px;
+    margin: 5px 10px;
+    padding: 16px 20px;
     background-color: #E7EDE1;
     border: solid 1px #D8DEC9;
     border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(46, 59, 36, 0.10);
+    box-shadow: 4px 4px 14px rgba(46, 59, 36, 0.12);
     
 }
 
+.topic-list-card:hover {
+    background-color: #b0d888;
+    border-color: #1F241C;
+    box-shadow: 8px 8px 12px rgba(46, 59, 36, 0.42);
+    scale: 1.01;
+}
+
 .topic-list-card-title {
-flex: 1;
+flex: 0 0 120px;
 text-align: left;
-margin-left: 20px;
+
 color: #1F241C;
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: 650;
 }
 
+.topic-list-card-description {
+flex: 1;
+ text-align: left;
+    color: #1f241c;
+    font-weight: 500;
+}
+
 .topic-list-button {
+    flex: 0 0 auto;
     background-color: #4F6547;
     border-color: #4F6547;
-    margin-right: 20px;
+    
     color: #ffffff;
     font-weight: 600;
     border-radius: 8px;

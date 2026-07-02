@@ -1,65 +1,70 @@
 @if (question(); as q) {
-    <section class="question-detail-card">
-            <article class="question-detail-question-card">
-                <div class="question-detail-question-number">{{q.id}}</div>
-                <div class="question-detail-question">{{q.questionText}}</div>
-            </article>
-            @switch (q.type) {
-                  @case ('sc') {
-                    <p class="fragentyp">Single Choice</p>
-                    <form [formGroup]="answerSingle">
-                    @for(answer of q.answers; track answer.id){
-                    <article class="question-detail-answer-card" [ngClass]="answer.state">
-                        <input type="radio" formControlName="answer" [value]="answer.id">
-                        <label>
-                            <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
-                            <div class="question-detail-answer" >{{answer.answerText}}</div>
-                        </label>
-                    </article>
-                    }
+<h1 class="question-detail-title">Einzelfragen</h1>
+<section class="question-detail-card">
+    <article class="question-detail-question-card">
+        <div class="question-detail-question-number">{{q.id}}</div>
+        <div class="question-detail-question">{{q.questionText}}</div>
+        </article>
+        @switch (q.type) {
+            @case ('sc') {
+            <p class="fragentyp">Single Choice</p>
+            <form [formGroup]="answerSingle">
+                @for(answer of q.answers; track answer.id){
+                <article class="question-detail-answer-card" [ngClass]="answer.state">
+                    <input type="radio" formControlName="answer" [value]="answer.id">
+                    <label>
+                        <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
+                        <div class="question-detail-answer">{{answer.answerText}}</div>
+                    </label>
+                </article>
+                }
+                <div class="question-detail-button-card">
+                    <button class=" btn btn-secondary question-detail-button" type="button"
+                        (click)="checkSingle()">Überprüfen</button>
+                    <button class="btn btn-secondary question-detail-button" type="button"
+                        (click)="checkAnswer()">Lösung</button>
+                    <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
+                </div>
+            </form>
+            }
+            @case ('mc') {
+            <p class="fragentyp">Multiple Choice</p>
+            <form [formGroup]="answerMulti">
+                @for(answer of q.answers; track answer.id){
+                <article class="question-detail-answer-card" [ngClass]="answer.state">
+                    <input type="checkbox" [formControlName]="'answer' + answer.id">
+                    <label>
+                        <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
+                        <div class="question-detail-answer">{{answer.answerText}}</div>
+                    </label>
+                </article>
+                }
+                <div class="question-detail-button-card">
+                    <button class=" btn btn-secondary question-detail-button" type="button"
+                        (click)="checkMultiple()">Überprüfen</button>
+                    <button class="btn btn-secondary question-detail-button" type="button"
+                        (click)="checkAnswer()">Lösung</button>
+                    <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
+                </div>
+            }
+            @default {
+                <p class="fragentyp">Eingabenfrage</p>
+                <form [formGroup]="answerCheck">
+                    <div class="question-detail-answer-card-eingabe">
+                        <input id="answer" type="text" formControlName="answer" placeholder="Gib hier die Antwort ein ..."
+                            class="eingabefeld">
+                    </div>
                     <div class="question-detail-button-card">
-                        <button class=" btn btn-secondary question-detail-button" type="button" (click)="checkSingle()">Überprüfen</button>
-                        <button class="btn btn-secondary question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
+                        <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
+                        <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
                         <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
                     </div>
-                    </form>
-                  }
-                  @case ('mc') {
-                    <p class="fragentyp">Multiple Choice</p>
-                    <form [formGroup]="answerMulti">
-                    @for(answer of q.answers; track answer.id){
-                    <article class="question-detail-answer-card" [ngClass]="answer.state">
-                        <input type="checkbox" [formControlName]="'answer' + answer.id">
-                        <label>
-                            <!--<div class="question-detail-answer-number">{{answer.id}}</div>-->
-                            <div class="question-detail-answer" >{{answer.answerText}}</div>
-                        </label>
-                    </article>
-                    }
-                    <div class="question-detail-button-card">
-                <button class=" btn btn-secondary question-detail-button" type="button" (click)="checkMultiple()">Überprüfen</button>
-                <button class="btn btn-secondary question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
-                <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
-            </div>
-                    </form>
-                  }
-              
-                  @default {
-                    <p>Eingabenfrage</p>
-                    <form>
-                        <input type="text">
-                        <label for="html">Gib deine Antwort ein.</label>
-                        <div class="question-detail-button-card">
-                <button class=" btn btn-secondary question-detail-button" type="button">Überprüfen</button>
-                <button class="btn btn-secondary question-detail-button" type="button">Lösung</button>
-                <a class=" btn btn-secondary question-detail-button" href="#">Zur Liste</a>
-            </div>
                 </form>
-                  }
                 }
-        </section>
-        <nav class="question-detail-navigation-card">
-            <a class="btn btn-secondary question-detail-navigation-button" href="#">vor &gt;&gt;</a>
-            <a class="btn btn-secondary question-detail-navigation-button" href="#">&lt;&lt; zurück</a>
-        </nav>
-    }
+                }
+</section>
+<nav class="question-detail-navigation-card">
+    <a class="btn btn-secondary question-detail-navigation-button" href="#">&lt;&lt; Frage zurück</a>
+    <a class="btn btn-secondary question-detail-navigation-button" href="#">Frage vor &gt;&gt;</a>
+</nav>
+}

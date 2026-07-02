@@ -1,3 +1,6 @@
+using web_api;
+using System.Text.Json;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApiDocument(config =>
@@ -11,8 +14,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("Angular", policy =>
     {
         policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
@@ -30,17 +33,17 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-/*app.MapGet("/questions/lpic101", () =>
+app.MapGet("/topics", () =>
 {
     var json = File.ReadAllText("Data/topics.json");
     return Results.Content(json, "application/json");
 });
-app.MapGet("/questions/lpic101", () =>
-{
-    var json = File.ReadAllText("Data/lpic/catalogs.json");
-    return Results.Content(json, "application/json");
-});*/
 
+app.MapGet("/topics/{topicId}/catalogs", (string topicId) =>
+{
+    var json = File.ReadAllText($"Data/{topicId}/catalogs.json");
+    return Results.Content(json, "application/json");
+});
 app.MapGet("/questions/lpic101", () =>
 {
     var json = File.ReadAllText("Data/lpic/lpic101b.json");
@@ -50,6 +53,29 @@ app.MapGet("/questions/lpic102", () =>
 {
     var json = File.ReadAllText("Data/lpic/lpic102b.json");
     return Results.Content(json, "application/json");
+});
+
+app.MapGet("/topics/{topicId}/catalogs/{catalogId}/questions", (string topicId, string catalogId) =>
+{
+    var catalogsJson = File.ReadAllText($"Data/{topicId}/catalogs.json");
+
+    var options = new JsonSerializerOptions
+{
+    PropertyNameCaseInsensitive = true
+};
+
+var catalogs = JsonSerializer.Deserialize<List<Catalog>>(catalogsJson, options);
+
+    var catalog = catalogs?.FirstOrDefault(c => c.Id == catalogId);
+
+    if (catalog == null)
+    {
+        return Results.NotFound();
+    }
+
+    var questionsJson = File.ReadAllText($"Data/{topicId}/{catalog.File}");
+
+    return Results.Content(questionsJson, "application/json");
 });
 
 app.Run();

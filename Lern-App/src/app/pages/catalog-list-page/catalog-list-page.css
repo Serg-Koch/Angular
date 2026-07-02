@@ -1,39 +1,66 @@
 .catalog-list {
     text-align: center;
     color: #1F241C;
+    font-weight: 500;
 
 }
 
 .catalog-list-title {
-    font-size: 4rem;
-    margin-top: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-top: 3rem;
     color: #1F241C;
     font-weight: 700;
 }
 
+.catalog-list-back-button-container {
+    display: flex;
+}
+
+.catalog-list-back-button {
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: #4f6547;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
 .catalog-list-box {
     display: flex;
+    flex-wrap: wrap;
     text-align: center;
     gap: 20px;
     margin-top: 25px;
+    margin-bottom: 25px;
     padding: 40px 30px;
     background-color: #ffffff;
     border: solid 1px #d8dec9;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(46, 59, 36, 0.10);
+    box-shadow: 8px 8px 24px rgba(46, 59, 36, 0.12);
 }
 
 .catalog-list-card {
-    flex: 1;
+    flex: 1 1 45%;
     align-items: center;
+    cursor: pointer;
     margin: 10px 10px;
-    padding: 60px 10px;
+    padding: 20px 10px;
     background-color: #E7EDE1;
     border: solid 1px #D8DEC9;
     border-radius: 10px;
-    box-shadow: 0 4px 14px rgba(46, 59, 36, 0.10);
-    color: #1F241C;
+    box-shadow: 4px 4px 12px rgba(46, 59, 36, 0.12);
+    
+}
+
+.catalog-list-card:hover {
+    background-color: #b0d888;
+    border-color: #1F241C;
+    box-shadow: 8px 8px 12px rgba(46, 59, 36, 0.42);
+    scale: 1.02;
+}
+
+.catalog-list-card-title {
+color: #1F241C;
     font-size: 2em;
     font-weight: 650;
 }
@@ -44,10 +71,11 @@
     color: #ffffff;
     font-weight: 600;
     border-radius: 8px;
+    margin-bottom: 5px;
 }
 
 .catalog-list-button:hover {
     background-color: #43563C;
-    border-color: #43563C;
+    border-color: #242e21;
     color: #ffffff;
 }

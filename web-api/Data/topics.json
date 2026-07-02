@@ -1,7 +1,16 @@
 [
     {
-        "id": "1",
+        "id": "lpic",
         "title": "LPIC",
         "description": "Linux Professional Institute Zertifizierung"
+    },
+    {
+        "id": "csharp",
+        "title": "C#",
+        "description": "C# für Dummies"
+    },{
+        "id": "sql",
+        "title": "SQL",
+        "description": "SQL-lernen, von zart bis hart"
     }
 ]

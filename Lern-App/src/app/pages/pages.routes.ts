@@ -3,17 +3,17 @@ import { CatalogListPage } from "./catalog-list-page/catalog-list-page";
 import { QuestionListPage } from "./question-list-page/question-list-page";
 import { QuestionDetailPage } from "./question-detail-page/question-detail-page";
 
-export const pagesRoutes : Routes = [
+export const pagesRoutes: Routes = [
     {
-        path: 'catalog',
+        path: 'topics/:topicId/catalogs',
         component: CatalogListPage
     },
     {
-        path: 'catalog/list/:level',
+        path: 'topics/:topicId/catalogs/:catalogId/list',
         component: QuestionListPage
     },
     {
-        path: 'list/:level/details/:id',
+        path: 'topics/:topicId/catalogs/:catalogId/list/details/:id',
         component: QuestionDetailPage
-    },
+    }
 ];

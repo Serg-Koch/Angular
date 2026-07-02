@@ -1,24 +1,17 @@
-import {inject, Injectable, Service } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Question } from './question';
-import { Answer } from './answer';
 
 @Injectable({
-    providedIn:'root'
+    providedIn: 'root'
 })
 export class QuestionsAndAnswers {
     #http = inject(HttpClient);
-    #apiUrlLpic101 = 'http://localhost:5100/questions/lpic101';
-    #apiUrlLpic102 = 'http://localhost:5100/questions/lpic102';
-getAll(level:string): Observable<Question[]> {
-    switch (level){
-        case "101":
-            return this.#http.get<Question[]>(`${this.#apiUrlLpic101}`);
-        case "102":
-            return this.#http.get<Question[]>(`${this.#apiUrlLpic102}`);
-        default:
-            throw new Error("Unknown level");
+
+    getAll(topicId: string, catalogId: string): Observable<Question[]> {
+        return this.#http.get<Question[]>(
+            `http://localhost:5100/topics/${topicId}/catalogs/${catalogId}/questions`
+        );
     }
-}
 }

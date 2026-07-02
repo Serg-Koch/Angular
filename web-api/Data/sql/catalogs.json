@@ -1,0 +1,14 @@
+[
+    {
+        "id": "sql1",
+        "title": "SQL für Anfänger",
+        "description": "Aller Anfang ist schwer",
+        "file": "sql1.json"
+    },
+    {
+        "id": "sql2",
+        "title": "SQL für Fortgeschrittene",
+        "description": "Wenn du nicht mehr ganz so dumm bist",
+        "file": "sql2.json"
+    }
+]
