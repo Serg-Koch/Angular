@@ -44,15 +44,20 @@
         </div>
     </form>
     }
-    @default {
+    @default{
     <p class="fragentyp">Eingabenfrage</p>
     <form  [formGroup]="answerTextInput">
         <div class="question-detail-answer-card-eingabe">
             <input type="text" formControlName="answer">
         </div>
         <p>{{inputAnswer}}</p>
-        @for(answer of inputAnswers; track answer.id){
-            {{answer.answerText}}
+        @if(isInputAnswersShowed){
+            <p>Mögliche Antworten:</p>
+            <ul>
+            @for(answer of inputAnswers; track answer.id){
+            <li>{{answer.answerText}}</li>
+            }
+            </ul>
         }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button" (click)="checkInput()">Überprüfen</button>
