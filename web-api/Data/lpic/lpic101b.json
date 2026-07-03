@@ -14,6 +14,16 @@
   },
   {
     "id": 2,
+    "type": "fi",
+    "questionText": "Which command will display messages from the kernel that were output during the normal boot sequence?",
+    "answers": [
+      { "id": 1, "answerText": "dmesg", "isCorrect": true },
+      { "id": 2, "answerText": "/bin/dmesg", "isCorrect": true }
+    ],
+    "hint": ""
+  },
+  {
+    "id": 3,
     "type": "sc",
     "questionText": "Which of the following statements is correct when talking about /proc/?",
     "answers": [
@@ -21,16 +31,6 @@
       { "id": 2, "answerText": "All files within /proc/ are read-only and their contents cannot be changed.", "isCorrect": false},
       { "id": 3, "answerText": "All changes to files in /proc/ are immediately recognized by the kernel.", "isCorrect": true},
       { "id": 4, "answerText": "All files within /proc/ are only readable by the root user.", "isCorrect": false}
-    ],
-    "hint": ""
-  },
-  {
-    "id": 3,
-    "type": "fi",
-    "questionText": "Which command will display messages from the kernel that were output during the normal boot sequence?",
-    "answers": [
-      { "id": 1, "answerText": "dmesg", "isCorrect": true },
-      { "id": 2, "answerText": "/bin/dmesg", "isCorrect": true }
     ],
     "hint": ""
   },

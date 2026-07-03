@@ -7,8 +7,8 @@
       { "id": 1, "answerText": "Wenn keiner gewinnt", "isCorrect": false},
       { "id": 2, "answerText": "Der dritte Bulle", "isCorrect": false},
       { "id": 3, "answerText": "jain", "isCorrect": false},
-      { "id": 4, "answerText": "Es gibt keinen dritten Zustand", "isCorrect": true},
-      { "id": 5, "answerText": "null", "isCorrect": false}
+      { "id": 4, "answerText": "null", "isCorrect": false},
+      { "id": 5, "answerText": "Es gibt keinen dritten Zustand", "isCorrect": true}
     ],
     "hint": ""
   },

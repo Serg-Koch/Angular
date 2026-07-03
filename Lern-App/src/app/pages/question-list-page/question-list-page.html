@@ -25,14 +25,16 @@
     @else {
         @if(isInputAnswersShowed){
             @for (answer of question.answers; track answer.id){
+                <div class="question-list-answer-card-ausfüllfragen">
                 <div class="question-list-answer">{{answer.answerText}}</div>
+                </div>
         }
     }
     }
     <div class="question-list-card-buttons">
         <a class="btn list-card-button"
             [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', question.id]">
-            Öffnen
+            Zur Frage
         </a>
 
         <a class="btn list-card-button" (click)="showCorrectAnswer(question.id, question.type)">

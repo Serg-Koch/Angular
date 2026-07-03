@@ -27,6 +27,7 @@ export class QuestionDetailPage {
   protected inputAnswer!: string;
   protected inputAnswers: Answer[] = [];
   protected isInputAnswersShowed = false;
+  protected inputAnswerState: 'default' | 'correct' | 'wrong' = 'default';
 
 
   constructor() {
@@ -140,15 +141,19 @@ export class QuestionDetailPage {
   checkInput() {
     const answerId = this.answerTextInput.value.answer?.toLowerCase();
     if (!answerId) {
-      this.inputAnswer = 'Du hast nichts eingetippt, schreib doch was!';
+      this.inputAnswer = 'Bitte eine Antwort eingeben!';
+      this.inputAnswerState = 'default';
       return;
     }
     const answers = this.question()?.answers ?? [];
-    this.inputAnswer = answers.some((answer) => answer.answerText.toLowerCase() === answerId)
-      ? 'Es ist korrekt! =)'
-      : 'Die Antwort ist falsch... =*(';
+    if (answers.some(answer => answer.answerText.toLowerCase() === answerId)) {
+      this.inputAnswer = 'Die Antwort ist korrekt! =)';
+      this.inputAnswerState = 'correct';
+    } else {
+      this.inputAnswer = 'Die Antwort ist falsch!';
+      this.inputAnswerState = 'wrong';
+    }
   }
-  //Gibt die richtigen Antworte (Eigabenaufgabe) aus
   correctInput() {
     const answers = this.question()?.answers ?? [];
     this.inputAnswers = answers;
