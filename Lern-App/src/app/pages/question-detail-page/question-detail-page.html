@@ -51,8 +51,8 @@
             <input type="text" formControlName="answer">
         </div>
         <p>{{inputAnswer}}</p>
-        @for(answer of inputAnswers; track answer.){
-
+        @for(answer of inputAnswers; track answer.id){
+            {{answer.answerText}}
         }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button" (click)="checkInput()">Überprüfen</button>
