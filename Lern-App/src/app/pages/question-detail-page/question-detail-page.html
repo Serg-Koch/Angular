@@ -50,17 +50,20 @@
     <p class="fragentyp">Eingabenfrage</p>
     <form  [formGroup]="answerTextInput">
         <div class="question-detail-answer-card-eingabe">
-            <input type="text" formControlName="answer">
+            <input type="text" formControlName="answer" placeholder="Gib hier die Antwort ein ..."
+                            class="eingabefeld">
         </div>
         <p>{{inputAnswer}}</p>
         @for(answer of inputAnswers; track answer.id){
+            <div class="question-detail-input-answer">
             {{answer.answerText}}
+            </div>
         }
         <div class="question-detail-button-card">
-            <button class="btn question-detail-button" type="button" (click)="checkInput()">Überprüfen</button>
-            <button class="btn question-detail-button" type="button" (click)="correctInput()">Lösung</button>
+            <button class="btn question-detail-button" type="button" (click)="checkInput()">Eingabe überprüfen</button>
+            <button class="btn question-detail-button" type="button" (click)="correctInput()">Lösung anzeigen</button>
             <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']"
-                [fragment]="'question-' + q.id">Zur Liste</a>
+                [fragment]="'question-' + q.id">Zurück zur Liste</a>
         </div>
     </form>
     }
