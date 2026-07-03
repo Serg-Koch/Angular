@@ -46,7 +46,7 @@
         </div>
     </form>
     }
-    @default {
+    @default{
     <p class="fragentyp">Eingabenfrage</p>
     <form  [formGroup]="answerTextInput">
         <div class="question-detail-answer-card-eingabe">
@@ -54,11 +54,13 @@
                             class="eingabefeld">
         </div>
         <p>{{inputAnswer}}</p>
+        @if(isInputAnswerShowed) {
         @for(answer of inputAnswers; track answer.id){
             <div class="question-detail-input-answer">
             {{answer.answerText}}
             </div>
         }
+    }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button" (click)="checkInput()">Eingabe überprüfen</button>
             <button class="btn question-detail-button" type="button" (click)="correctInput()">Lösung anzeigen</button>
