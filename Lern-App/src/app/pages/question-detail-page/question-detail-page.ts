@@ -29,7 +29,7 @@ export class QuestionDetailPage {
   protected previousQuestionId!: number;
   protected nextQuestionId!: number;
   protected inputAnswer!: string;
-  protected inputAnswers: string[] = [];
+  protected inputAnswers: Answer[] = [];
 
   constructor() {
     this.#route.paramMap.subscribe(params => {
@@ -145,7 +145,5 @@ export class QuestionDetailPage {
   correctInput(){
     const answers = this.question()?.answers ?? [];
     this.inputAnswers = answers;
-
-
   }
 }
