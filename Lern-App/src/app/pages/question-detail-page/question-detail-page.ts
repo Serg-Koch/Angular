@@ -1,14 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
-
 import { Question } from '../../shared/question';
 import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
-
 import { ElementSchemaRegistry } from '@angular/compiler';
-
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
@@ -19,6 +15,7 @@ import { NgClass } from '@angular/common';
   templateUrl: './question-detail-page.html',
   styleUrl: './question-detail-page.css',
 })
+
 export class QuestionDetailPage {
   #route = inject(ActivatedRoute);
   #questionsAndAnswers = inject(QuestionsAndAnswers);
@@ -59,6 +56,8 @@ export class QuestionDetailPage {
     });
   }
 
+  //Antwortenstruktur von <form>
+
   answerSingle = new FormGroup({
     answer: new FormControl(null),
   });
@@ -73,19 +72,22 @@ export class QuestionDetailPage {
     answer: new FormControl(''),
   });
 
+  //Zeigt die richtigen Antworte für keine Eingabenaufgaben
   checkAnswer() {
     const answerId = this.answerSingle.value.answer;
     if (answerId === null) {
       const allAnswers = this.question()?.answers!;
       for (const answer of allAnswers) {
         if (answer.state == 'correct') {
-          answer.state = 'default';
+          answer.state = '';
         } else if (answer.isCorrect) {
           answer.state = 'correct';
         }
       }
     }
   }
+
+  //Überprüft Single-Choice-Eingabe
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
     const answer = this.question()?.answers.find((a) => a.id === answerId)!;
@@ -101,19 +103,8 @@ export class QuestionDetailPage {
       }
     }
   }
-  /*checkMultiple() {
-    const answerId = this.answerMulti.value;
-    console.log(answerId);
-    const answers = this.question()?.answers!;
-    for (const answer of answers) {
-      const selected = answerId['answer${q.id}' as keyof typeof answerId];
-      if (selected && answer.isCorrect){
-        answer.state = 'correct';
-      }
-      else if (selected && !q.isCorrect)
-         {answer.state = 'wrong';}
-    }
-  }*/
+
+  //Überprüft Multiple-Choice-Eingabe
   checkMultiple() {
     const selected = this.answerMulti.value;
     const answers = this.question()?.answers ?? [];
@@ -129,10 +120,12 @@ export class QuestionDetailPage {
       }
     }
   }
+
+  //Überprüft von Nutzer eingegebenden Text
   checkInput() {
     const answerId = this.answerTextInput.value.answer?.toLowerCase();
-    if(!answerId){
-      this.inputAnswer = 'Du hast nichts eingetippt, schreib doch was!'
+    if (!answerId) {
+      this.inputAnswer = 'Du hast nichts eingetippt, schreib doch was!';
       return;
     }
     const answers = this.question()?.answers ?? [];
@@ -140,6 +133,7 @@ export class QuestionDetailPage {
       ? 'Es ist korrekt! =)'
       : 'Die Antwort ist falsch... =*(';
   }
+  //Gibt die richtigen Antworte (Eigabenaufgabe) aus
   correctInput() {
     const answers = this.question()?.answers ?? [];
     this.inputAnswers = answers;
