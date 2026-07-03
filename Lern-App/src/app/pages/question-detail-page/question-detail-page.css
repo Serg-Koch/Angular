@@ -178,9 +178,11 @@
   background-color: lightgreen;
   margin: 10px 5px;
   border-radius: 10px;
-  background-color: #e7ede1;
-  border: solid 1px #d8dec9;
+ padding: 5px 25px;
+  border: solid 1px #555555;
   color: #1f241c;
+  font-weight: 550;
+   box-shadow: 4px 4px 10px rgba(46, 59, 36, 0.12);
 }
 
 .question-detail-navigation-card {
