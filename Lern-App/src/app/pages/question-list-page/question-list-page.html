@@ -13,23 +13,28 @@
         <div class="question-list-question-number">#{{question.id}}</div>
         <div class="question-list-question">{{question.questionText}}</div>
     </div>
-
-    @for (answer of question.answers; track answer.id){
     @if (question.type !== "fi"){
+    @for (answer of question.answers; track answer.id){
     <div class="question-list-answer-card" [ngClass]="answer.state">
         <div class="question-list-answer-number">{{answer.id}}</div>
         <div class="question-list-answer">{{answer.answerText}}</div>
     </div>
     }
+}
+    @else {
+        @if(isInputAnswersShowed){
+            @for (answer of question.answers; track answer.id){
+                <div class="question-list-answer">{{answer.answerText}}</div>
+        }
     }
-
+    }
     <div class="question-list-card-buttons">
         <a class="btn list-card-button"
             [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', question.id]">
             Zur Frage
         </a>
 
-        <a class="btn list-card-button" (click)="showCorrectAnswer(question.id)">
+        <a class="btn list-card-button" (click)="showCorrectAnswer(question.id, question.type)">
             Lösung anzeigen
         </a>
     </div>
