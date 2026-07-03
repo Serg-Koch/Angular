@@ -181,11 +181,11 @@
 }
 
 .question-detail-überprüfung.correct {
-    color: #4F8A10;
+    color: #28a745;
 }
 
 .question-detail-überprüfung.wrong {
-    color: #C0392B;
+    color: #D40000;
 }
 
 .question-detail-überprüfung.default {

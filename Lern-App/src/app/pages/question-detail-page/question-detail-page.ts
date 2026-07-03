@@ -133,7 +133,7 @@ export class QuestionDetailPage {
   checkInput() {
     const answerId = this.answerTextInput.value.answer?.toLowerCase();
     if (!answerId) {
-      this.inputAnswer = 'Du hast nichts eingetippt!';
+      this.inputAnswer = 'Bitte eine Antwort eingeben!';
       this.inputAnswerState = 'default';
       return;
     }

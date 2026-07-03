@@ -24,7 +24,9 @@
     @else {
         @if(isInputAnswersShowed){
             @for (answer of question.answers; track answer.id){
+                <div class="question-list-answer-card-ausfüllfragen">
                 <div class="question-list-answer">{{answer.answerText}}</div>
+                </div>
         }
     }
     }

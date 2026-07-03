@@ -36,7 +36,7 @@
     border-radius: 12px;
     background-color: #ffffff;
     border: solid 1px #d8dec9;
-    box-shadow: 0 8px 24px rgba(46, 59, 36, 0.12);
+    box-shadow: 8px 8px 24px rgba(46, 59, 36, 0.12);
 
 }
 
@@ -77,6 +77,8 @@
 .question-list-answer-card.correct {
     background-color: lightgreen;
     border: solid 1px #222222;
+    box-shadow: 4px 4px 14px rgba(46, 59, 36, 0.22);
+
 }
 
 .question-list-answer-card.wrong {
@@ -94,6 +96,16 @@
     background-color: #ffffff;
     color: #2e3b24;
     font-weight: 700;
+}
+
+.question-list-answer-card-ausfüllfragen {
+    border: solid 1px #2e3b24;
+    background-color: lightgreen;
+    padding: 8px 12px;
+    margin: 10px 5px;
+    border-radius: 10px;
+    color: #1f241c;
+    box-shadow: 4px 4px 14px rgba(46, 59, 36, 0.22);
 }
 
 .question-list-answer {
