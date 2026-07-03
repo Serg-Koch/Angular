@@ -48,22 +48,30 @@
     }
     @default {
     <p class="fragentyp">Eingabenfrage</p>
-    <!-- <form [formGroup]="answerCheck">                
-                    <div class="question-detail-answer-card-eingabe">
-                        <input id="answer" type="text" formControlName="answer" placeholder="Gib hier die Antwort ein ..."
-                            class="eingabefeld">
-                    </div>
-                    <div class="question-detail-button-card">
-                        <button class="btn question-detail-button" type="button">Eingabe überprüfen</button>
-                        <button class="btn question-detail-button" type="button">Lösung anzeigen</button>
-                        <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']" [fragment]="'question-' + q.id">Zurück zur Liste</a>
-                    </div>
-                </form> -->
+    <form  [formGroup]="answerTextInput">
+        <div class="question-detail-answer-card-eingabe">
+            <input type="text" formControlName="answer">
+        </div>
+        <p>{{inputAnswer}}</p>
+        @for(answer of inputAnswers; track answer.id){
+            {{answer.answerText}}
+        }
+        <div class="question-detail-button-card">
+            <button class="btn question-detail-button" type="button" (click)="checkInput()">Überprüfen</button>
+            <button class="btn question-detail-button" type="button" (click)="correctInput()">Lösung</button>
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']"
+                [fragment]="'question-' + q.id">Zur Liste</a>
+        </div>
+    </form>
     }
     }
 </section>
 <nav class="question-detail-navigation-card">
-    <a class="btn btn-secondary question-detail-navigation-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', previousQuestionId]">&lt;&lt; Frage zurück</a>
-    <a class="btn btn-secondary question-detail-navigation-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', nextQuestionId]">Frage vor &gt;&gt;</a>
+    <a class="btn btn-secondary question-detail-navigation-button"
+        [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', previousQuestionId]">&lt;&lt; Frage
+        zurück</a>
+    <a class="btn btn-secondary question-detail-navigation-button"
+        [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list', 'details', nextQuestionId]">Frage vor
+        &gt;&gt;</a>
 </nav>
 }
