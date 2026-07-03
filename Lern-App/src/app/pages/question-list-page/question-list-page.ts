@@ -14,27 +14,30 @@ import { NgClass } from '@angular/common';
 })
 export class QuestionListPage {
   #route = inject(ActivatedRoute);
-  #questionsAndAnswers = inject(QuestionsAndAnswers)
+  #questionsAndAnswers = inject(QuestionsAndAnswers);
   protected questions = signal<Question[]>([]);
   protected topicId!: string;
   protected catalogId!: string;
+  protected isInputAnswersShowed = false;
 
   constructor() {
     this.topicId = this.#route.snapshot.paramMap.get('topicId')!;
     this.catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
-console.log('topicId:', this.topicId);
-console.log('catalogId:', this.catalogId);
+    console.log('topicId:', this.topicId);
+    console.log('catalogId:', this.catalogId);
 
-    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe(questions => {
+    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
       this.questions.set(questions);
-    })
+    });
   }
-  showCorrectAnswer(id: number) {
+  showCorrectAnswer(id: number, type: string) {
     const question = this.questions().find((q) => q.id === id)!;
-    for (const answer of question.answers) {
-      if (answer.isCorrect) {
-        answer.state = 'correct';
+    if (type === 'fi') {
+    this.isInputAnswersShowed = !this.isInputAnswersShowed;
+    return;
+  }
+      for (const answer of question.answers) {
+        answer.isCorrect && answer.state !== 'correct' ? answer.state = 'correct' : answer.state = '';
+        }
       }
     }
-  }
-}
