@@ -3,4 +3,5 @@ export interface Answer {
     answerText: string;
     isCorrect: boolean;
     state: 'default' | 'correct' | 'wrong' | "";
+    isShown: boolean;
 }

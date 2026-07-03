@@ -1,14 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
-
 import { Question } from '../../shared/question';
 import { Answer } from '../../shared/answer';
 import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
-
 import { ElementSchemaRegistry } from '@angular/compiler';
-
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
@@ -32,6 +28,7 @@ export class QuestionDetailPage {
   protected inputAnswers: Answer[] = [];
   protected isInputAnswersShowed = false;
   protected inputAnswerState: 'default' | 'correct' | 'wrong' = 'default';
+
 
   constructor() {
     this.#route.paramMap.subscribe((params) => {
@@ -60,6 +57,8 @@ export class QuestionDetailPage {
     });
   }
 
+  //Antwortenstruktur von <form>
+
   answerSingle = new FormGroup({
     answer: new FormControl(null),
   });
@@ -74,50 +73,57 @@ export class QuestionDetailPage {
     answer: new FormControl(''),
   });
 
-  checkAnswer() {
-    const answerId = this.answerSingle.value.answer;
-    if (answerId === null) {
-      const allAnswers = this.question()?.answers!;
-      for (const answer of allAnswers) {
-        if (answer.state == 'correct') {
-          answer.state = 'default';
-        } else if (answer.isCorrect) {
-          answer.state = 'correct';
-        }
+  //Zeigt die richtigen Antworte für keine Eingabenaufgaben
+  checkAnswerS() {
+    const allAnswers = this.question()?.answers!;
+    this.resetSelection();
+    for (const answer of allAnswers) {
+        if(answer.isCorrect && answer.state !== 'correct'){
+            this.resetState();
+            answer.state = 'correct'
+          }
+          else{
+           answer.state = '';
       }
     }
   }
+    checkAnswerM() {
+    const allAnswers = this.question()?.answers!;
+    this.resetSelection();
+    for (const answer of allAnswers) {
+          if(!answer.isShown && answer.isCorrect){
+            answer.state = 'correct';
+            answer.isShown = true;
+          }
+          else
+          {
+            answer.state = '';
+            answer.isShown = false;
+          }
+      }
+    }
+
+  //Überprüft Single-Choice-Eingabe
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
     const answer = this.question()?.answers.find((a) => a.id === answerId)!;
+    if(answerId)
+      {
+      this.resetSelection();
+      this.resetState();
+      }
     if (answer.isCorrect) {
       answer.state = 'correct';
     } else {
       answer.state = 'wrong';
-      const allAnswers = this.question()?.answers!;
-      for (const answer of allAnswers) {
-        if (answer.isCorrect) {
-          answer.state = 'correct';
-        }
-      }
     }
   }
-  /*checkMultiple() {
-    const answerId = this.answerMulti.value;
-    console.log(answerId);
-    const answers = this.question()?.answers!;
-    for (const answer of answers) {
-      const selected = answerId['answer${q.id}' as keyof typeof answerId];
-      if (selected && answer.isCorrect){
-        answer.state = 'correct';
-      }
-      else if (selected && !q.isCorrect)
-         {answer.state = 'wrong';}
-    }
-  }*/
+
+  //Überprüft Multiple-Choice-Eingabe
   checkMultiple() {
     const selected = this.answerMulti.value;
     const answers = this.question()?.answers ?? [];
+    this.resetSelection();
 
     for (const answer of answers) {
       const isSelected = selected[`answer${answer.id}` as keyof typeof selected];
@@ -130,6 +136,8 @@ export class QuestionDetailPage {
       }
     }
   }
+
+  //Überprüft von Nutzer eingegebenden Text
   checkInput() {
     const answerId = this.answerTextInput.value.answer?.toLowerCase();
     if (!answerId) {
@@ -147,6 +155,7 @@ export class QuestionDetailPage {
     }
   }
 
+  //Gibt die richtige Antwort (Eigabeaufgabe) aus
   correctInput() {
     const answers = this.question()?.answers ?? [];
     this.inputAnswers = answers;
@@ -156,4 +165,16 @@ export class QuestionDetailPage {
       this.isInputAnswersShowed = false;
     }
   }
+  resetSelection() {
+    this.answerSingle.reset();
+    this.answerMulti.reset();
+  }
+  resetState(){
+    const answers = this.question()?.answers ?? [];
+    for (const answer of answers)
+    {
+      answer.state = '';
+    }
+  }
+  
 }
