@@ -15,7 +15,6 @@ import { NgClass } from '@angular/common';
   templateUrl: './question-detail-page.html',
   styleUrl: './question-detail-page.css',
 })
-
 export class QuestionDetailPage {
   #route = inject(ActivatedRoute);
   #questionsAndAnswers = inject(QuestionsAndAnswers);
@@ -28,6 +27,7 @@ export class QuestionDetailPage {
   protected inputAnswer!: string;
   protected inputAnswers: Answer[] = [];
   protected isInputAnswersShowed = false;
+
 
   constructor() {
     this.#route.paramMap.subscribe((params) => {
@@ -73,34 +73,48 @@ export class QuestionDetailPage {
   });
 
   //Zeigt die richtigen Antworte für keine Eingabenaufgaben
-  checkAnswer() {
-    const answerId = this.answerSingle.value.answer;
-    if (answerId === null) {
-      const allAnswers = this.question()?.answers!;
-      for (const answer of allAnswers) {
-        if (answer.state == 'correct') {
-          answer.state = '';
-        } else if (answer.isCorrect) {
-          answer.state = 'correct';
-        }
+  checkAnswerS() {
+    const allAnswers = this.question()?.answers!;
+    this.resetSelection();
+    for (const answer of allAnswers) {
+        if(answer.isCorrect && answer.state !== 'correct'){
+            this.resetState();
+            answer.state = 'correct'
+          }
+          else{
+           answer.state = '';
       }
     }
   }
+    checkAnswerM() {
+    const allAnswers = this.question()?.answers!;
+    this.resetSelection();
+    for (const answer of allAnswers) {
+          if(!answer.isShown && answer.isCorrect){
+            answer.state = 'correct';
+            answer.isShown = true;
+          }
+          else
+          {
+            answer.state = '';
+            answer.isShown = false;
+          }
+      }
+    }
 
   //Überprüft Single-Choice-Eingabe
   checkSingle() {
     const answerId = Number(this.answerSingle.value.answer);
     const answer = this.question()?.answers.find((a) => a.id === answerId)!;
+    if(answerId)
+      {
+      this.resetSelection();
+      this.resetState();
+      }
     if (answer.isCorrect) {
       answer.state = 'correct';
     } else {
       answer.state = 'wrong';
-      const allAnswers = this.question()?.answers!;
-      for (const answer of allAnswers) {
-        if (answer.isCorrect) {
-          answer.state = 'correct';
-        }
-      }
     }
   }
 
@@ -108,6 +122,7 @@ export class QuestionDetailPage {
   checkMultiple() {
     const selected = this.answerMulti.value;
     const answers = this.question()?.answers ?? [];
+    this.resetSelection();
 
     for (const answer of answers) {
       const isSelected = selected[`answer${answer.id}` as keyof typeof selected];
@@ -143,4 +158,16 @@ export class QuestionDetailPage {
       this.isInputAnswersShowed = false;
     }
   }
+  resetSelection() {
+    this.answerSingle.reset();
+    this.answerMulti.reset();
+  }
+  resetState(){
+    const answers = this.question()?.answers ?? [];
+    for (const answer of answers)
+    {
+      answer.state = '';
+    }
+  }
+  
 }

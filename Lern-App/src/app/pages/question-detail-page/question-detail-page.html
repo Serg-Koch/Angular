@@ -20,7 +20,7 @@
         }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button" (click)="checkSingle()">Überprüfen</button>
-            <button class="btn question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
+            <button class="btn question-detail-button" type="button" (click)="checkAnswerS()">Lösung</button>
             <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur
                 Liste</a>
         </div>
@@ -38,7 +38,7 @@
         }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button" (click)="checkMultiple()">Überprüfen</button>
-            <button class="btn question-detail-button" type="button" (click)="checkAnswer()">Lösung</button>
+            <button class="btn question-detail-button" type="button" (click)="checkAnswerM()">Lösung</button>
             <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur
                 Liste</a>
         </div>
