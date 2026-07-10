@@ -19,10 +19,11 @@
         </label>
         }
         <div class="question-detail-button-card">
-            <button class="btn question-detail-button" type="button" (click)="checkSingle()">Überprüfen</button>
-            <button class="btn question-detail-button" type="button" (click)="checkAnswerS()">Lösung</button>
-            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur
-                Liste</a>
+            <button class="btn question-detail-button" type="button"
+                (click)="checkSingle()">Eingabe überprüfen</button>
+            <button class="btn question-detail-button" type="button"
+                (click)="checkAnswerS()">Lösung anzeigen</button>
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
         </div>
     </form>
     }
@@ -37,10 +38,11 @@
         </label>
         }
         <div class="question-detail-button-card">
-            <button class="btn question-detail-button" type="button" (click)="checkMultiple()">Überprüfen</button>
-            <button class="btn question-detail-button" type="button" (click)="checkAnswerM()">Lösung</button>
-            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zur
-                Liste</a>
+            <button class="btn question-detail-button" type="button"
+                (click)="checkMultiple()">Eingabe überprüfen</button>
+            <button class="btn question-detail-button" type="button"
+                (click)="checkAnswerM()">Lösung anzeigen</button>
+            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
         </div>
     </form>
     }
@@ -48,7 +50,7 @@
     <p class="fragentyp">Eingabefrage</p>
     <form  [formGroup]="answerTextInput">
         <div class="question-detail-answer-card-eingabe">
-            <input type="text" formControlName="answer" placeholder="Gib hier die Antwort ein ..."
+            <input type="text" formControlName="answer" placeholder="Gib hier deine Antwort ein ..."
                             class="eingabefeld">
         </div>
         <p class="question-detail-überprüfung" [ngClass]="inputAnswerState">{{inputAnswer}}</p>

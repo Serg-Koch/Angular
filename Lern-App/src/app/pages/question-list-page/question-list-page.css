@@ -36,7 +36,7 @@
     border-radius: 12px;
     background-color: #ffffff;
     border: solid 1px #d8dec9;
-    box-shadow: 8px 8px 24px rgba(46, 59, 36, 0.12);
+    box-shadow: 8px 8px 24px rgba(46, 59, 36, 0.22);
 
 }
 
@@ -71,7 +71,6 @@
     background-color: #e7ede1;
     border: solid 1px #d8dec9;
     color: #1f241c;
-
 }
 
 .question-list-answer-card.correct {

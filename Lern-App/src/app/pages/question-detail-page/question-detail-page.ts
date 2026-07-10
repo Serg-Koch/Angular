@@ -154,6 +154,7 @@ export class QuestionDetailPage {
       this.inputAnswerState = 'wrong';
     }
   }
+
   correctInput() {
     const answers = this.question()?.answers ?? [];
     this.inputAnswers = answers;

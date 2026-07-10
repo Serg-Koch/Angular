@@ -8,8 +8,8 @@
 <p class="topic-list mt-5">Wählen Sie ein Thema aus</p>
 <section class="topic-list-box">
     @if (hasError()) {
-    <div>
-        Daten konnten nicht geladen werden!
+    <div class="topic-list-keine-daten">
+        Es können gerade keine Daten geladen werden!
     </div>
     } @else {
     @for (topic of topics(); track topic.id) {
