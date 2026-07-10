@@ -19,16 +19,23 @@ export class QuestionListPage {
   protected topicId!: string;
   protected catalogId!: string;
   protected isInputAnswersShowed = false;
-
+  hasError = signal<string | null>(null);
   constructor() {
     this.topicId = this.#route.snapshot.paramMap.get('topicId')!;
     this.catalogId = this.#route.snapshot.paramMap.get('catalogId')!;
-    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
-      this.questions.set(questions);
-    });
+    this.#questionsAndAnswers.getAllQuestions(this.topicId, this.catalogId).subscribe({
+      next: questions => {
+        this.questions.set(questions);
+        this.hasError.set(null);
+      },
+      error: error => {
+        this.hasError.set("Es können gerade keine Daten geladen werden!");
+      }
+    });   
   }
 
   //zeigt die richtigen Antworte
+  
   showCorrectAnswer(id: number, type: string) {
     const question = this.questions().find((q) => q.id === id)!;
     if (type === 'fi') {

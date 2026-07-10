@@ -6,8 +6,12 @@
     <a class="btn question-list-headline-button" [routerLink]="['/topics', topicId, 'catalogs']">Zurück zur
         Katalogauswahl</a>
 </div>
+@if (hasError()) {
+    {{hasError()}}
+    }
 
-@for(question of questions(); track question.id){
+@if(questions()){
+    @for(question of questions(); track question.id){
 <div class="question-list-card">
 
     <div class="question-list-question-card">
@@ -42,5 +46,6 @@
         </a>
     </div>
 </div>
+}
 }
 <a [routerLink]="[]" fragment="top" class="question-list-to-top">&uarr;</a>

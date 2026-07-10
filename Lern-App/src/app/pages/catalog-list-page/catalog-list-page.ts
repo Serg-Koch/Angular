@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Catalog } from '../../shared/catalog';
+import { QuestionsAndAnswers } from '../../shared/questions-and-answers';
 
 
 @Component({
@@ -13,17 +14,25 @@ import { Catalog } from '../../shared/catalog';
 export class CatalogListPage {
   private http = inject(HttpClient);
   private route = inject(ActivatedRoute);
+  #questionsAndAnswers = inject(QuestionsAndAnswers);
 
   catalogs = signal<Catalog[]>([]);
-  topicId = this.route.snapshot.paramMap.get('topicId');
+  topicId: string;
   hasError = signal(false);
 
 constructor() {
-    this.http.get<Catalog[]>(`http://localhost:5100/topics/${this.topicId}/catalogs`)
-    .subscribe(catalogs => {
-      this.catalogs.set(catalogs);
-    });
-  }
+  this.topicId = this.route.snapshot.paramMap.get('topicId')!;
+  console.log('loading catalogs', this.topicId);
+  this.#questionsAndAnswers.getCatalog(this.topicId).subscribe({
+      next: catalogs => {
+        this.catalogs.set(catalogs);
+      },
+      error: error => {
+        console.log("server ist ausgefallen");
+        this.hasError.set(true);
+      }
+    });   
+}
 }
 
 
