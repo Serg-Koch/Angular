@@ -3,7 +3,7 @@
   font-size: 3rem;
   margin-top: 20px;
   margin-top: 3rem;
-  color: #1F241C;
+  color: #1f241c;
   font-weight: 700;
   letter-spacing: 0.2rem;
 }
@@ -40,7 +40,7 @@
 }
 
 .fragentyp {
-  color: #C0603A;
+  color: #c0603a;
   font-weight: 550;
   margin-left: 10px;
 }
@@ -70,8 +70,8 @@
 }
 
 .question-detail-answer-card:has(input:checked) {
-  background-color: #C8E2B0;
-  border-color: #7FA15D;
+  background-color: #c8e2b0;
+  border-color: #7fa15d;
 }
 
 .question-detail-answer-card:has(input:checked).correct {
@@ -163,7 +163,7 @@
 .question-detail-button {
   flex: 1 1 180px;
   margin: 0 5px;
-  background-color: #4F6547;
+  background-color: #4f6547;
   color: #ffffff;
   font-weight: 600;
   border-radius: 8px;
@@ -171,9 +171,10 @@
 }
 
 .question-detail-button:hover {
-  background-color: #43563c;
+  background-color: #3a4b34;
+  box-shadow: 8px 8px 24px rgba(46, 59, 36, 0.32);
   border: solid 1px #222222;
-  box-shadow: 4px 4px 12px rgba(46, 59, 36, 0.42);
+  scale: 1.02;
 }
 
 .question-detail-überprüfung {
@@ -188,11 +189,11 @@
 }
 
 .question-detail-überprüfung.wrong {
-  color: #D40000;
+  color: #d40000;
 }
 
 .question-detail-überprüfung.default {
-  color: #1F241C;
+  color: #1f241c;
 }
 
 .question-detail-input-answer {
@@ -221,7 +222,7 @@
   margin: 0 25px;
   background-color: white;
   border: 1px solid #b8c4ae;
-  color: #2E3B24;
+  color: #2e3b24;
   font-weight: 600;
   box-shadow: 8px 8px 14px rgba(46, 59, 36, 0.12);
 }
