@@ -4,16 +4,10 @@
 </div>
 <p class="catalog-list mt-4">Wählen Sie einen Katalog aus und lassen Sie sich die entsprechende Fragenliste anzeigen</p>
 <section class="catalog-list-box">
-    @if (hasError()) {
-        <div class="catalog-list-card">
-            Daten konnten nicht geladen werden!
-        </div>
-    } @else {
     @for (catalog of catalogs(); track catalog.id) {
     <div class="catalog-list-card" [routerLink]="['/topics', topicId, 'catalogs', catalog.id, 'list']">
         <p class="catalog-list-card-title">{{catalog.title}}</p>
         <p>{{catalog.description}}</p>
     </div>
     }
-}
 </section>
