@@ -19,11 +19,11 @@
         </label>
         }
         <div class="question-detail-button-card">
-            <button class="btn question-detail-button" type="button"
-                (click)="checkSingle()">Eingabe überprüfen</button>
-            <button class="btn question-detail-button" type="button"
-                (click)="checkAnswerS()">Lösung anzeigen</button>
-            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
+            <button class="btn question-detail-button" type="button" (click)="checkSingle()">Eingabe überprüfen</button>
+            <button class="btn question-detail-button" type="button" (click)="showAnswerSingle()">Lösung
+                anzeigen</button>
+            <a class="btn question-detail-button"
+                [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
         </div>
     </form>
     }
@@ -38,32 +38,34 @@
         </label>
         }
         <div class="question-detail-button-card">
-            <button class="btn question-detail-button" type="button"
-                (click)="checkMultiple()">Eingabe überprüfen</button>
-            <button class="btn question-detail-button" type="button"
-                (click)="checkAnswerM()">Lösung anzeigen</button>
-            <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
+            <button class="btn question-detail-button" type="button" (click)="checkMultiple()">Eingabe
+                überprüfen</button>
+            <button class="btn question-detail-button" type="button" (click)="showAnswerMultiple()">Lösung
+                anzeigen</button>
+            <a class="btn question-detail-button"
+                [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']">Zurück zur Liste</a>
         </div>
     </form>
     }
     @default{
     <p class="fragentyp">Eingabefrage</p>
-    <form  [formGroup]="answerTextInput">
+    <form [formGroup]="answerTextInput">
         <div class="question-detail-answer-card-eingabe">
             <input type="text" formControlName="answer" placeholder="Gib hier deine Antwort ein ..."
-                            class="eingabefeld">
+                class="eingabefeld">
         </div>
         <p class="question-detail-überprüfung" [ngClass]="inputAnswerState">{{inputAnswer}}</p>
         @if(isInputAnswersShowed) {
-        @for(answer of inputAnswers; track answer.id){
-            <div class="question-detail-input-answer">
+        @for(answer of allAnswers(); track answer.id){
+        <div class="question-detail-input-answer">
             {{answer.answerText}}
-            </div>
+        </div>
         }
-    }
+        }
         <div class="question-detail-button-card">
             <button class="btn question-detail-button" type="button" (click)="checkInput()">Eingabe überprüfen</button>
-            <button class="btn question-detail-button" type="button" (click)="correctInput()">Lösung anzeigen</button>
+            <button class="btn question-detail-button" type="button" (click)="showAnswerInput()">Lösung
+                anzeigen</button>
             <a class="btn question-detail-button" [routerLink]="['/topics', topicId, 'catalogs', catalogId, 'list']"
                 [fragment]="'question-' + q.id">Zurück zur Liste</a>
         </div>

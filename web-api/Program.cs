@@ -44,16 +44,6 @@ app.MapGet("/topics/{topicId}/catalogs", (string topicId) =>
     var json = File.ReadAllText($"Data/{topicId}/catalogs.json");
     return Results.Content(json, "application/json");
 });
-app.MapGet("/questions/lpic101", () =>
-{
-    var json = File.ReadAllText("Data/lpic/lpic101b.json");
-    return Results.Content(json, "application/json");
-});
-app.MapGet("/questions/lpic102", () =>
-{
-    var json = File.ReadAllText("Data/lpic/lpic102b.json");
-    return Results.Content(json, "application/json");
-});
 
 app.MapGet("/topics/{topicId}/catalogs/{catalogId}/questions", (string topicId, string catalogId) =>
 {

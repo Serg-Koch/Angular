@@ -6,10 +6,6 @@
     <a class="btn question-list-headline-button" [routerLink]="['/topics', topicId, 'catalogs']">Zurück zur
         Katalogauswahl</a>
 </div>
-@if (hasError()) {
-    {{hasError()}}
-    }
-
 @if(questions()){
     @for(question of questions(); track question.id){
 <div class="question-list-card">

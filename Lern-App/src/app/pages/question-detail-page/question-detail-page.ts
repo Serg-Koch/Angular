@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { Question } from '../../shared/question';
@@ -20,15 +20,16 @@ export class QuestionDetailPage {
   #questionsAndAnswers = inject(QuestionsAndAnswers);
   protected questions = signal<Question[]>([]);
   protected question = signal<Question | null>(null);
+  protected allAnswers = computed(() => {
+    return this.question()?.answers ?? [];
+  });
   protected topicId!: string;
   protected catalogId!: string;
   protected previousQuestionId!: number;
   protected nextQuestionId!: number;
   protected inputAnswer!: string;
-  protected inputAnswers: Answer[] = [];
   protected isInputAnswersShowed = false;
   protected inputAnswerState: 'default' | 'correct' | 'wrong' = 'default';
-
 
   constructor() {
     this.#route.paramMap.subscribe((params) => {
@@ -41,20 +42,22 @@ export class QuestionDetailPage {
   }
 
   private loadQuestion(id: number) {
-    this.#questionsAndAnswers.getAll(this.topicId, this.catalogId).subscribe((questions) => {
-      this.questions.set(questions);
+    this.#questionsAndAnswers
+      .getAllQuestions(this.topicId, this.catalogId)
+      .subscribe((questions) => {
+        this.questions.set(questions);
 
-      const currentQuestion = questions.find((q) => q.id === id)!;
-      this.question.set(currentQuestion);
-      const currentIndex = questions.findIndex((q) => q.id === id);
+        const currentQuestion = questions.find((q) => q.id === id)!;
+        this.question.set(currentQuestion);
+        const currentIndex = questions.findIndex((q) => q.id === id);
 
-      const previousIndex = currentIndex === 0 ? questions.length - 1 : currentIndex - 1;
+        const previousIndex = currentIndex === 0 ? questions.length - 1 : currentIndex - 1;
 
-      const nextIndex = currentIndex === questions.length - 1 ? 0 : currentIndex + 1;
+        const nextIndex = currentIndex === questions.length - 1 ? 0 : currentIndex + 1;
 
-      this.previousQuestionId = questions[previousIndex].id;
-      this.nextQuestionId = questions[nextIndex].id;
-    });
+        this.previousQuestionId = questions[previousIndex].id;
+        this.nextQuestionId = questions[nextIndex].id;
+      });
   }
 
   //Antwortenstruktur von <form>
@@ -74,79 +77,68 @@ export class QuestionDetailPage {
   });
 
   //Zeigt die richtigen Antworte für keine Eingabenaufgaben
-  checkAnswerS() {
-    const allAnswers = this.question()?.answers!;
+  showAnswerSingle() {
     this.resetSelection();
-    for (const answer of allAnswers) {
-        if(answer.isCorrect && answer.state !== 'correct'){
-            this.resetState();
-            answer.state = 'correct'
-          }
-          else{
-           answer.state = '';
+    for (const answer of this.allAnswers()) {
+      if (answer.isCorrect && answer.state !== 'correct') {
+        answer.state = 'correct';
+      } else {
+        answer.state = '';
       }
     }
   }
-    checkAnswerM() {
-    const allAnswers = this.question()?.answers!;
+  showAnswerMultiple() {
     this.resetSelection();
-    for (const answer of allAnswers) {
-          if(!answer.isShown && answer.isCorrect){
-            answer.state = 'correct';
-            answer.isShown = true;
-          }
-          else
-          {
-            answer.state = '';
-            answer.isShown = false;
-          }
+    for (const answer of this.allAnswers()) {
+      if (!answer.isShown && answer.isCorrect) {
+        answer.state = 'correct';
+        answer.isShown = true;
+      } else {
+        answer.state = '';
+        answer.isShown = false;
       }
     }
+  }
 
   //Überprüft Single-Choice-Eingabe
   checkSingle() {
-    const answerId = Number(this.answerSingle.value.answer);
-    const answer = this.question()?.answers.find((a) => a.id === answerId)!;
-    if(answerId)
-      {
-      this.resetSelection();
-      this.resetState();
+    const answerInput = Number(this.answerSingle.value.answer);
+    const answer = this.allAnswers().find((a) => a.id === answerInput)!;
+    this.resetSelection();
+    this.resetState();
+    if (answerInput != 0) {
+      if (answer.isCorrect) {
+        answer.state = 'correct';
+      } else {
+        answer.state = 'wrong';
       }
-    if (answer.isCorrect) {
-      answer.state = 'correct';
-    } else {
-      answer.state = 'wrong';
     }
   }
 
   //Überprüft Multiple-Choice-Eingabe
   checkMultiple() {
     const selected = this.answerMulti.value;
-    const answers = this.question()?.answers ?? [];
     this.resetSelection();
-
-    for (const answer of answers) {
+    this.resetState();
+    for (const answer of this.allAnswers()) {
       const isSelected = selected[`answer${answer.id}` as keyof typeof selected];
       if (isSelected && answer.isCorrect) {
         answer.state = 'correct';
       } else if (isSelected && !answer.isCorrect) {
         answer.state = 'wrong';
-      } else {
-        answer.state = '';
       }
     }
   }
 
   //Überprüft von Nutzer eingegebenden Text
   checkInput() {
-    const answerId = this.answerTextInput.value.answer?.toLowerCase();
-    if (!answerId) {
+    const answerTextInput = this.answerTextInput.value.answer?.toLowerCase();
+    if (!answerTextInput) {
       this.inputAnswer = 'Bitte eine Antwort eingeben!';
       this.inputAnswerState = 'default';
       return;
     }
-    const answers = this.question()?.answers ?? [];
-    if (answers.some(answer => answer.answerText.toLowerCase() === answerId)) {
+    if (this.allAnswers().some((answer) => answer.answerText.toLowerCase() === answerTextInput)) {
       this.inputAnswer = 'Die Antwort ist korrekt! =)';
       this.inputAnswerState = 'correct';
     } else {
@@ -155,25 +147,22 @@ export class QuestionDetailPage {
     }
   }
 
-  correctInput() {
-    const answers = this.question()?.answers ?? [];
-    this.inputAnswers = answers;
+  showAnswerInput() {
     if (!this.isInputAnswersShowed) {
       this.isInputAnswersShowed = true;
     } else {
       this.isInputAnswersShowed = false;
     }
   }
+
   resetSelection() {
     this.answerSingle.reset();
     this.answerMulti.reset();
   }
-  resetState(){
-    const answers = this.question()?.answers ?? [];
-    for (const answer of answers)
-    {
+
+  resetState() {
+    for (const answer of this.allAnswers()) {
       answer.state = '';
     }
   }
-  
 }

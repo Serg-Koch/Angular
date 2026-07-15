@@ -20,19 +20,13 @@ export class CatalogListPage {
   topicId: string;
   hasError = signal(false);
 
-constructor() {
-  this.topicId = this.route.snapshot.paramMap.get('topicId')!;
-  console.log('loading catalogs', this.topicId);
-  this.#questionsAndAnswers.getCatalog(this.topicId).subscribe({
-      next: catalogs => {
-        this.catalogs.set(catalogs);
-      },
-      error: error => {
-        console.log("server ist ausgefallen");
-        this.hasError.set(true);
-      }
-    });   
-}
+  constructor() {
+    this.topicId = this.route.snapshot.paramMap.get('topicId')!;
+    console.log('loading catalogs', this.topicId);
+    this.#questionsAndAnswers.getCatalog(this.topicId).subscribe((catalogs) => {
+      this.catalogs.set(catalogs);
+    });
+  }
 }
 
 
