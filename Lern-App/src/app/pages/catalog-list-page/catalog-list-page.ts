@@ -18,7 +18,6 @@ export class CatalogListPage {
 
   catalogs = signal<Catalog[]>([]);
   topicId: string;
-  hasError = signal(false);
 
   constructor() {
     this.topicId = this.route.snapshot.paramMap.get('topicId')!;

@@ -30,7 +30,7 @@ export class QuestionListPage {
       });
   }
 
-  //zeigt die richtigen Antworte
+  //zeigt die richtigen Antworten
 
   showCorrectAnswer(id: number, type: string) {
     const question = this.questions().find((q) => q.id === id)!;
